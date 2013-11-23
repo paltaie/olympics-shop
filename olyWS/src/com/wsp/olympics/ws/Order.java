@@ -36,14 +36,15 @@ public class Order {
 	}
 	
 	@WebMethod
-	public void updateOrderStatus(@WebParam(name="orderNumber") String orderNumber, @WebParam(name="status") String status) {
-		com.wsp.olympics.model.Order order = orderBean.getOrderByOrderNumber(orderNumber);
-		if (order == null) {
-			throw new RuntimeException("Can't find order with ID \"" + orderNumber + "\"");
-		}
-		String orderId = order.getOrderId();
+	public void updateOrderStatus(@WebParam(name="orderId") String orderId, @WebParam(name="status") String status) {
 		if (status.toUpperCase().trim().equals("SENT")) {
-			orderBean.updateOrderStatus(orderId, status);
+			try {
+				orderBean.updateOrderStatus(orderId, status);
+			} catch (Exception e) {
+				if (e.getCause() instanceof NullPointerException) {
+					throw new RuntimeException("Can't find order with ID \"" + orderId + "\"");
+				}
+			}
 		} else {
 			throw new IllegalArgumentException("You can only set the status of an order to \"SENT\"");
 		}

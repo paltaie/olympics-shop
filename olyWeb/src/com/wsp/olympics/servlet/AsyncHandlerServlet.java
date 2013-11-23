@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.wsp.olympics.model.OrderProduct;
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.service.ShoppingCartService;
 
@@ -57,10 +56,7 @@ public class AsyncHandlerServlet extends HttpServlet {
 			if (cart == null) {
 				request.setAttribute("cartSize", "0");
 			} else {
-				int cartSize = 0;
-				for (OrderProduct o : cart.getOrderProducts()){
-					cartSize += o.getQty().intValue();
-				}
+				int cartSize = cart.getOrderProducts().size();
 				request.setAttribute("cartSize", cartSize);
 			}
 			request.getRequestDispatcher("/WEB-INF/jsp/async/cartSize.jsp").forward(request, response);

@@ -23,7 +23,7 @@ public class ShoppingCartService {
 			InitialContext ctx = new InitialContext();
 			shoppingCartBean = (ShoppingCartBeanRemote) ctx.lookup("ejb/shoppingCart#com.wsp.olympics.ejb.ShoppingCartBeanRemote");
 		} catch (NamingException e) {
-			e.printStackTrace();
+			
 		}
 	}
 

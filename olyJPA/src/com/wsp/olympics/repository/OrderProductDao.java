@@ -7,7 +7,7 @@ import com.wsp.olympics.model.OrderProduct;
 /**
  * Performs various operations on OrderProducts (an order/product linking)
  * 
- * @author WSP
+ * @author Patrick Altaie
  */
 public interface OrderProductDao {
 	/**

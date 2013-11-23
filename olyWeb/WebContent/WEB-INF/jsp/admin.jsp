@@ -7,9 +7,9 @@
 			<p>This is the admin page</p>
 			<a href="<c:url value="/oly/admin?action=getOutstanding"/>">View outstanding orders</a>
 			<br/>
-			<form action="<c:url value="/oly/admin?action=updateOrder"/>" method="post" onsubmit="return validateUpdateOrder();">
-				<label for="order_number">Or update this order: </label>
-				<input type="text" id="order_number" name="order_number"/>
+			<form action="<c:url value="/oly/admin?action=updateOrder"/>" method="post">
+				<label for="order_id">Or update this order: </label>
+				<input type="text" id="order_id" name="order_id"/>
 				<input type="submit" value="Go"/>
 			</form>
 			<p><a class="button" href="<c:url value="/oly/admin?action=logout"/>">Log out</a></p>

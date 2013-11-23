@@ -6,7 +6,6 @@
 		<link id="page_favicon" href="<c:url value="/favicon.ico"/>" rel="icon" type="image/x-icon" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="<c:url value="/js/tablePagination.0.5.min.js"/>"></script>
 		<script type="text/javascript" src="<c:url value="/js/validate.js"/>"></script>
 		<title>${param.title}</title>
 	</head>
@@ -26,9 +25,6 @@
 		<div id="head-container">
 			<div id="header">
 				<h1>Olympics Shop</h1>
-				<div class="logo">
-					<img src="<c:url value="/images/header/logo.png"/>"/>
-				</div>
 			</div>
 		</div>
 		<div id="navigation-container">

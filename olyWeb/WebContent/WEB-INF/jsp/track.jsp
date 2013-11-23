@@ -3,7 +3,7 @@
 			<jsp:param name="title" value="Order Tracking"/>
 		</jsp:include>
 		<div id="content">
-			<h2>Order Tracking<c:if test="${surnameMatch eq true}">: ${cart.order.orderNumber}</c:if></h2>
+			<h2>Order Tracking<c:if test="${surnameMatch eq true}">: ${cart.order.orderId}</c:if></h2>
 			<c:choose>
 				<c:when test="${orderNotFound eq true or surnameMatch eq false}">
 					<p>The details you provided do not match any entry in our system. Please <a href="<c:url value="/oly?action=track"/>">try again</a> or start a new order by looking at our <a href="<c:url value="/oly?action=products"/>">products page</a></p>
@@ -12,7 +12,7 @@
 					<form id="order_tracking" action="oly?action=track" method="post" onsubmit="return validateTrack();">
 						<p>
 						<label for="order_id">Order Number <span style="color:red;">*</span></label>
-						<input type="text" id="order_number" name="order_number"/>
+						<input type="text" id="order_id" name="order_id"/>
 						<br/>
 						<label for="surname">Surname</label>
 						<input type="text" id="surname" name="surname"/>

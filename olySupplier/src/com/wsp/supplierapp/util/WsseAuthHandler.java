@@ -16,8 +16,6 @@ public class WsseAuthHandler implements SOAPHandler<SOAPMessageContext> {
 
 	private static final String WSS_PREFIX = "wsse";
 	private static final String WSS_NAMESPACE = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
-	private static final String SOAPENV_PREFIX = "S";
-	private static final String SOAPENV_NAMESPACE = "http://schemas.xmlsoap.org/soap/envelope/";
 	private String username;
 	private String password;
 	
@@ -40,7 +38,6 @@ public class WsseAuthHandler implements SOAPHandler<SOAPMessageContext> {
 						"Security",
 						WSS_PREFIX,
 						WSS_NAMESPACE);
-				wsSecHeaderElm.addAttribute(envelope.createName("mustUnderstand", SOAPENV_PREFIX, SOAPENV_NAMESPACE), "1");
 				SOAPElement userNameTokenElm = soapFactory.createElement("UsernameToken",
 						WSS_PREFIX,
 						WSS_NAMESPACE);

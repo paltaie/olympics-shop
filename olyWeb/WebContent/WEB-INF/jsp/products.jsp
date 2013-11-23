@@ -3,7 +3,7 @@
 			<jsp:param name="title" value="Products"/>
 		</jsp:include>
 		<div id="content">
-			<h2>Listing all products <c:if test="${not empty category}">in category "${category}"</c:if></h2>
+			<h2>Listing all products <c:if test="${not empty category}">under category "${category}"</c:if></h2>
 			<c:if test="${empty products}">
 				<i>No products here</i>
 			</c:if>
@@ -29,16 +29,6 @@
 			$(".category").button({
 				icons: {primary:'ui-icon-triangle-1-e'}
 			});
-			<c:if test="${fn:length(products) gt 8}">
-			$("#product_table").tablePagination({
-				firstArrow: (new Image()).src="<c:url value="/images/first.gif"/>",
-				prevArrow : (new Image()).src="<c:url value="/images/prev.gif"/>",
-				lastArrow : (new Image()).src="<c:url value="/images/last.gif"/>",
-				nextArrow : (new Image()).src="<c:url value="/images/next.gif"/>",
-				rowsPerPage: 4,
-				topNav: true
-			});
-			</c:if>
 		</script>
 	</body>
 </html>

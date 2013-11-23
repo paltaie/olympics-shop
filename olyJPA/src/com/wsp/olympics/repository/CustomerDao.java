@@ -5,7 +5,7 @@ import com.wsp.olympics.model.Customer;
 /**
  * Performs various customer-related operations
  * 
- * @author WSP
+ * @author Patrick Altaie
  */
 public interface CustomerDao {
 	/**

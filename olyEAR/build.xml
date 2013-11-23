@@ -1,5 +1,4 @@
 <project name="olyEAR">
-	<property name="wl.home" value="D:\Oracle\Middleware\wlserver_10.3"/>
 	<property name="build.dir.name" value="build2"/>
 	<property name="build.dir" value="${basedir}/build2"/>
 	<property name="app.name" value="olyEAR"/>
@@ -8,14 +7,6 @@
 	<property name="ejb.client.project" value="${basedir}/../olyEJBClient"/>
 	<property name="web.project" value="${basedir}/../olyWeb"/>
 	<property name="ws.project" value="${basedir}/../olyWS"/>
-    
-	<path id="master-classpath">
-		<fileset dir="${wl.home}/server/lib">
-			<include name="**/*.jar"/>
-		</fileset>
-		<fileset file="${build.dir}/olyJPA.jar"/>
-		<fileset file="${build.dir}/olyEJBClient.jar"/>
-    </path>
 	
 	<target name="init">
 		<mkdir dir="${build.dir}"/>
@@ -69,9 +60,5 @@
 		<copy todir="${build.dir}/assembly/sql">
 			<fileset dir="${web.project}/sql"/>
 		</copy>
-	</target>
-	
-	<target name="javadoc" depends="collect-src">
-		<javadoc sourcepath="${build.dir}/assembly/src" destdir="${web.project}/WebContent/docs/javadoc" classpathref="master-classpath"/>
 	</target>
 </project>

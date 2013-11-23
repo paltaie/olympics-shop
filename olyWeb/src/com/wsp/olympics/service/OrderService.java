@@ -4,7 +4,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.wsp.olympics.ejb.OrderBeanRemote;
-import com.wsp.olympics.model.Order;
 
 /**
  * Provides services for retrieving orders
@@ -34,16 +33,5 @@ public class OrderService {
 	 */
 	public void updateOrderStatus(String orderId, String status) {
 		orderBean.updateOrderStatus(orderId, status);
-	}
-	
-
-	/**
-	 * Gets an order by its order number (i.e. the business ID), or null if it cannot be found.
-	 * 
-	 * @param orderNumber the order number to search for
-	 * @return the order that was found, or null
-	 */
-	public Order getOrderByOrderNumber(String orderNumber) {
-		return orderBean.getOrderByOrderNumber(orderNumber);
 	}
 }

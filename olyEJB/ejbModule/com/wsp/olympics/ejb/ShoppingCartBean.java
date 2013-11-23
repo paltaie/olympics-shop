@@ -35,7 +35,7 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote, ShoppingCartBea
 			orderProductBean = (OrderProductBeanRemote) ctx.lookup("ejb/orderProduct#com.wsp.olympics.ejb.OrderProductBeanRemote");
 			productBean = (ProductBeanRemote) ctx.lookup("ejb/product#com.wsp.olympics.ejb.ProductBeanRemote");
 		} catch (NamingException e) {
-			e.printStackTrace();
+			
 		}
 	}
 	
@@ -49,7 +49,6 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote, ShoppingCartBea
 			cart.setOrderProducts(orderProducts);
 			return cart;
 		} catch (NullPointerException e) {
-			System.err.println("Couldn't find cart with order ID \"" + orderId + "\". Returning null...");
 			return null;
 		}
 	}

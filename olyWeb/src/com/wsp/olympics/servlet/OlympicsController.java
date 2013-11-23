@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.wsp.olympics.action.Action;
 import com.wsp.olympics.action.AddToCartAction;
 import com.wsp.olympics.action.CheckoutAction;
-import com.wsp.olympics.action.ClearCartAction;
 import com.wsp.olympics.action.GetOutstandingOrdersAction;
 import com.wsp.olympics.action.GetProductAction;
 import com.wsp.olympics.action.GetProductListAction;
@@ -70,8 +69,6 @@ public class OlympicsController extends HttpServlet {
 			forwardAction = new AddToCartAction();
 		} else if (action.equals("updateCart")) {
 			forwardAction = new UpdateCartAction();
-		} else if (action.equals("clearCart")) {
-			forwardAction = new ClearCartAction();
 		} else if (action.equals("getOutstanding") && isAdminRequest(request)) {
 			forwardAction = new GetOutstandingOrdersAction();
 		} else if (action.equals("updateOrder") && isAdminRequest(request)) {

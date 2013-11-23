@@ -14,12 +14,12 @@
 					<th>Status</th>
 				</tr>
 				<c:forEach items="${carts}" var="cart">
-					<c:set var="orderTotal" value="0"/>
 					<c:forEach items="${cart.orderProducts}" var="orderProduct">
+						<c:set var="orderTotal" value="0"/>
 						<c:set var="orderTotal" value="${orderTotal + (orderProduct.product.price * orderProduct.qty)}"/>
 					</c:forEach>
 					<tr>
-						<td><a href="<c:url value="/oly/admin?action=updateOrder&order_number=${cart.order.orderNumber}"/>">${cart.order.orderNumber}</a></td>
+						<td><a href="<c:url value="/oly/admin?action=updateOrder&order_id=${cart.order.orderId}"/>">${cart.order.orderId}</a></td>
 						<td>${cart.order.customer.surname}</td>
 						<td>${cart.order.customer.country}</td>
 						<td>${cart.order.customer.postcode}</td>
@@ -27,7 +27,7 @@
 						<td>${cart.order.status}</td>
 					</tr>
 				</c:forEach>
-			</table>
+				</table>
 			<p><a class="button" href="<c:url value="/oly/admin?action=logout"/>">Log out</a><a class="button" href="<c:url value="/oly/admin?action=admin"/>">Main page</a></p>
 		</div>
 		<%@include file="../include/footer.html"%>

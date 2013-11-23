@@ -20,7 +20,7 @@
 				</tr>
 				<tr>
 					<td><b>Address</b></td>
-					<td><span>${customer.houseNo}</span> ${customer.street}, ${customer.suburb}, ${customer.state}, ${customer.postcode}, ${customer.country}</td>
+					<td>${customer.houseNo} ${customer.street}, ${customer.suburb}, ${customer.state}, ${customer.postcode}, ${customer.country}</td>
 				</tr>
 				<tr>
 					<td><b>Credit Card</b></td>

@@ -16,8 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @NamedQueries({
-	@NamedQuery(name="Order.ordersByStatus", query="SELECT o FROM Order o WHERE o.status = :status ORDER BY o.orderId"),
-	@NamedQuery(name="Order.orderByOrderNumber", query="SELECT o FROM Order o WHERE o.orderNumber = :orderNumber")
+	@NamedQuery(name="Order.ordersByStatus", query="SELECT o FROM Order o WHERE o.status = :status ORDER BY o.orderId")
 })
 
 /**
@@ -35,9 +34,6 @@ public class Order implements Serializable {
 	@Column(name="ORDER_ID")
 	private String orderId;
 
-	@Column(name="ORDER_NUMBER")
-	private String orderNumber;
-
 	private String status;
 
 	//uni-directional many-to-one association to Customer
@@ -45,8 +41,8 @@ public class Order implements Serializable {
 	@JoinColumn(name="CUSTOMER_ID")
 	private Customer customer;
 
-    public Order() {
-    }
+	public Order() {
+	}
 
 	public String getOrderId() {
 		return this.orderId;
@@ -54,14 +50,6 @@ public class Order implements Serializable {
 
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
-	}
-
-	public String getOrderNumber() {
-		return this.orderNumber;
-	}
-
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
 	}
 
 	public String getStatus() {

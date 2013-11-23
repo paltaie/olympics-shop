@@ -2,12 +2,9 @@ package com.wsp.supplierapp.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,11 +14,10 @@ import com.wsp.supplierapp.service.SupplierModel;
 import com.wsp.supplierapp.view.View;
 
 public class UpdateOrderPanel extends JPanel implements View {
-	private static final String[] STATUSES = {"SENT", "ORDERED"};
+	private static final String[] STATUSES = {"ORDERED", "SENT"};
 	
 	private SupplierModel model;
-	private JLabel orderIdLabel = new JLabel("Order Number:");
-	private JTextField orderNumberField = new JTextField(15);
+	private JTextField orderIdField = new JTextField(15);
 	private JComboBox statusComboBox = new JComboBox(STATUSES);
 	private JButton updateButton = new JButton("Update");
 	
@@ -34,23 +30,11 @@ public class UpdateOrderPanel extends JPanel implements View {
 	private void setup() {
 		model.attach(this);
 		updateButton.setEnabled(false);
-		orderNumberField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (!orderNumberField.getText().isEmpty()) {
-					updateButton.setEnabled(true);
-				} else {
-					updateButton.setEnabled(false);
-				}
-				super.keyTyped(e);
-			}
-		});
 		updateButton.addActionListener(new UpdateButtonListener());
 	}
 
 	private void build() {
-		add(orderIdLabel);
-		add(orderNumberField);
+		add(orderIdField);
 		add(statusComboBox);
 		add(updateButton);
 	}
@@ -64,10 +48,10 @@ public class UpdateOrderPanel extends JPanel implements View {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				model.getOrderService().updateOrderStatus(orderNumberField.getText(),
+				model.getOrderService().updateOrderStatus(orderIdField.getText(),
 						statusComboBox.getSelectedItem().toString());
 				JOptionPane.showMessageDialog(null, "Successfully updated order ID \"" +
-						orderNumberField.getText() + "\" to \"" +
+						orderIdField.getText() + "\" to \"" +
 						statusComboBox.getSelectedItem().toString() + 
 						"\"", "Success!", JOptionPane.INFORMATION_MESSAGE);
 			} catch (SOAPFaultException ex) {

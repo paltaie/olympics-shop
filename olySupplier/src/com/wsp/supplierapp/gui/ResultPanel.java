@@ -18,7 +18,7 @@ public class ResultPanel extends JPanel implements View {
 	private SupplierModel model;
 	private JTable table;
 	private OrderTableModel otm = new OrderTableModel();
-
+	
 	ResultPanel(SupplierModel model) {
 		this.model = model;
 		setup();
@@ -30,7 +30,7 @@ public class ResultPanel extends JPanel implements View {
 		table = new JTable(otm);
 		table.setAutoCreateRowSorter(true);
 	}
-
+	
 	private void build() {
 		add(new JScrollPane(table));
 	}
@@ -41,24 +41,24 @@ public class ResultPanel extends JPanel implements View {
 			otm.fireTableDataChanged();
 		}
 	}
-
+	
 	private class OrderTableModel extends AbstractTableModel {
-
+		
 		private Vector<String> headings = new Vector<String>();
 
 		public OrderTableModel() {
-			headings.add("Order Number");
+			headings.add("Order ID");
 			headings.add("Surname");
 			headings.add("Total Items");
 			headings.add("Order Status");
 			headings.add("Grand Total");
 		}
-
+		
 		@Override
 		public String getColumnName(int column) {
 			return headings.get(column);
 		}
-
+		
 		@Override
 		public int getRowCount() {
 			if (model.getPaidOrderList() != null) {
@@ -77,9 +77,9 @@ public class ResultPanel extends JPanel implements View {
 			PaidOrder currentOrder = model.getPaidOrderList().get(rowIndex);
 			int totalItems = calculateTotalItems(currentOrder);
 			String grandTotal = calculateGrandTotal(currentOrder);
-
+			
 			switch (columnIndex) {
-				case 0: return currentOrder.getOrder().getOrderNumber();
+				case 0: return currentOrder.getOrder().getOrderId();
 				case 1: return currentOrder.getOrder().getCustomer().getSurname();
 				case 2: return totalItems;
 				case 3: return currentOrder.getOrder().getStatus();
@@ -87,7 +87,7 @@ public class ResultPanel extends JPanel implements View {
 				default: return "???";
 			}
 		}
-
+		
 		private String calculateGrandTotal(PaidOrder paidOrder) {
 			double total = 0;
 			for (OrderProduct op : paidOrder.getLineItem()) {
@@ -96,7 +96,7 @@ public class ResultPanel extends JPanel implements View {
 			NumberFormat formatter = NumberFormat.getCurrencyInstance();
 			return formatter.format(total);
 		}
-
+		
 		private int calculateTotalItems(PaidOrder paidOrder) {
 			int total = 0;
 			for (OrderProduct op : paidOrder.getLineItem()) {

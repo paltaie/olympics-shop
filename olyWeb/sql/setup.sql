@@ -67,8 +67,7 @@ CREATE TABLE orders
 (
 	order_id VARCHAR2(255) NOT NULL,
 	customer_id VARCHAR2(6) NOT NULL,
-  	status VARCHAR2(7) NOT NULL CHECK(status IN ('ORDERED', 'PAID', 'SENT')),
-  	order_number VARCHAR2(255),
+  status VARCHAR2(7) NOT NULL CHECK(status IN ('ORDERED', 'PAID', 'SENT')),
 	CONSTRAINT order_id_pk PRIMARY KEY (order_id),
 	CONSTRAINT customer_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );

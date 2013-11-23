@@ -32,11 +32,6 @@ public class OrderBean implements OrderBeanRemote, OrderBeanLocal {
 	}
 
 	@Override
-	public Order getOrderByOrderNumber(String orderNumber) {
-		return dao.getOrderByOrderNumber(orderNumber);
-	}
-
-	@Override
 	public List<Order> getOrdersByStatus(String status) {
 		return dao.getOrdersByStatus(status);
 	}

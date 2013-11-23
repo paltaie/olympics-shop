@@ -28,20 +28,6 @@ public interface Order {
 
     /**
      * 
-     * @param status
-     * @param orderNumber
-     */
-    @WebMethod
-    @RequestWrapper(localName = "updateOrderStatus", targetNamespace = "http://ws.olympics.wsp.com/", className = "com.wsp.olympics.ws.UpdateOrderStatus")
-    @ResponseWrapper(localName = "updateOrderStatusResponse", targetNamespace = "http://ws.olympics.wsp.com/", className = "com.wsp.olympics.ws.UpdateOrderStatusResponse")
-    public void updateOrderStatus(
-        @WebParam(name = "orderNumber", targetNamespace = "")
-        String orderNumber,
-        @WebParam(name = "status", targetNamespace = "")
-        String status);
-
-    /**
-     * 
      * @return
      *     returns java.util.List<com.wsp.olympics.ws.types.PaidOrder>
      */
@@ -50,5 +36,19 @@ public interface Order {
     @RequestWrapper(localName = "getPaidOrders", targetNamespace = "http://ws.olympics.wsp.com/", className = "com.wsp.olympics.ws.GetPaidOrders")
     @ResponseWrapper(localName = "getPaidOrdersResponse", targetNamespace = "http://ws.olympics.wsp.com/", className = "com.wsp.olympics.ws.GetPaidOrdersResponse")
     public List<PaidOrder> getPaidOrders();
+
+    /**
+     * 
+     * @param status
+     * @param orderId
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateOrderStatus", targetNamespace = "http://ws.olympics.wsp.com/", className = "com.wsp.olympics.ws.UpdateOrderStatus")
+    @ResponseWrapper(localName = "updateOrderStatusResponse", targetNamespace = "http://ws.olympics.wsp.com/", className = "com.wsp.olympics.ws.UpdateOrderStatusResponse")
+    public void updateOrderStatus(
+        @WebParam(name = "orderId", targetNamespace = "")
+        String orderId,
+        @WebParam(name = "status", targetNamespace = "")
+        String status);
 
 }

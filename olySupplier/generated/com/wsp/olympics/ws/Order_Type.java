@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="customer" type="{http://ws.olympics.wsp.com/}customer" minOccurs="0"/>
  *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="orderNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -32,14 +31,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "order", propOrder = {
     "customer",
     "orderId",
-    "orderNumber",
     "status"
 })
 public class Order_Type {
 
     protected Customer customer;
     protected String orderId;
-    protected String orderNumber;
     protected String status;
 
     /**
@@ -88,30 +85,6 @@ public class Order_Type {
      */
     public void setOrderId(String value) {
         this.orderId = value;
-    }
-
-    /**
-     * Gets the value of the orderNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOrderNumber() {
-        return orderNumber;
-    }
-
-    /**
-     * Sets the value of the orderNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOrderNumber(String value) {
-        this.orderNumber = value;
     }
 
     /**

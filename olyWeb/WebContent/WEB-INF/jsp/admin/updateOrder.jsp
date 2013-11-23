@@ -6,15 +6,15 @@
 			<c:choose>
 				<c:when test="${not empty cart.order.orderId}">
 					<c:if test="${statusUpdated eq true}">
-						<p class="notification">&#10004; Success. New status for order ${cart.order.orderNumber} is now ${cart.order.status}.</p>
+						<p class="notification">&#10004; Success. New status for order ${cart.order.orderId} is now ${cart.order.status}.</p>
 					</c:if>
-					<h2>Updating Order: ${cart.order.orderNumber}</h2>
+					<h2>Updating Order: ${cart.order.orderId}</h2>
 					<form action="<c:url value="/oly/admin?action=updateOrder"/>" method="post">
-					<input type="hidden" name="order_number" value="${cart.order.orderNumber}"/>
+					<input type="hidden" name="order_id" value="${cart.order.orderId}"/>
 					<ul>
 						<li>Name: ${cart.order.customer.givenName}&nbsp;${cart.order.customer.surname}</li>
 						<li>Email: ${cart.order.customer.email}</li>
-						<li>Address: <span>${cart.order.customer.houseNo}</span> ${cart.order.customer.street}, ${cart.order.customer.suburb}, ${cart.order.customer.state}, ${cart.order.customer.postcode}, ${cart.order.customer.country}</li>
+						<li>Address: ${cart.order.customer.houseNo} ${cart.order.customer.street}, ${cart.order.customer.suburb}, ${cart.order.customer.state}, ${cart.order.customer.postcode}, ${cart.order.customer.country}</li>
 						<li>Credit card: XXXX-XXXX-XXXX-${fn:substring(cart.order.customer.ccNumber, fn:length(cart.order.customer.ccNumber)-4, fn:length(cart.order.customer.ccNumber))}</li>
 						<li>Status:
 							<select name="new_status" id="new_status">

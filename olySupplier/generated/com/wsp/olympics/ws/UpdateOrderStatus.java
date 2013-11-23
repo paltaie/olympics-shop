@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="orderNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -28,36 +28,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "updateOrderStatus", propOrder = {
-    "orderNumber",
+    "orderId",
     "status"
 })
 public class UpdateOrderStatus {
 
-    protected String orderNumber;
+    protected String orderId;
     protected String status;
 
     /**
-     * Gets the value of the orderNumber property.
+     * Gets the value of the orderId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getOrderNumber() {
-        return orderNumber;
+    public String getOrderId() {
+        return orderId;
     }
 
     /**
-     * Sets the value of the orderNumber property.
+     * Sets the value of the orderId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setOrderNumber(String value) {
-        this.orderNumber = value;
+    public void setOrderId(String value) {
+        this.orderId = value;
     }
 
     /**

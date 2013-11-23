@@ -8,7 +8,7 @@ import com.wsp.olympics.model.Product;
 /**
  * Performs various product-related operations
  * 
- * @author WSP
+ * @author Patrick Altaie
  */
 public interface ProductDao {
 	/**

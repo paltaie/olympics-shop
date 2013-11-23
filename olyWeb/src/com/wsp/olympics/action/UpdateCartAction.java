@@ -36,7 +36,6 @@ public class UpdateCartAction implements Action {
 	 * we need to use to update the cart
 	 */
 	private void updateCart(HttpServletRequest request) {
-		@SuppressWarnings("unchecked")
 		Enumeration<String> params = request.getParameterNames();
 		//Break the process down into items to delete and things to update
 		List<OrderProduct> deletes = new ArrayList<OrderProduct>();

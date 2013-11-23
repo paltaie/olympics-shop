@@ -1,6 +1,7 @@
 package com.wsp.olympics.service;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -9,6 +10,7 @@ import com.wsp.olympics.ejb.CategoryBeanRemote;
 import com.wsp.olympics.ejb.ProductBeanRemote;
 import com.wsp.olympics.model.Category;
 import com.wsp.olympics.model.Product;
+import com.wsp.olympics.utils.LoggingUtils;
 
 /**
  * The service interface for various product-related services
@@ -39,6 +41,9 @@ public class ProductService {
 	public List<Product> getProductsByCategoryName(String categoryName) {
 		Category category = categoryBean.getCategoryByName(categoryName);
 		List<Product> products = productBean.getProductsByCategory(category);
+		if (products.size() == 0) {
+			LoggingUtils.log(Level.WARNING, "[ProductService]Couldn't find product with category name " + categoryName + ". Returning empty product list...");
+		}
 		return products;
 	}
 

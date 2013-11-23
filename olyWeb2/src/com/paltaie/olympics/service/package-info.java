@@ -1,0 +1,4 @@
+/**
+ * This package provides services that provide another layer of abstraction away from the data source. A service is a component which retrieves business data that could potentially come from a number of different DAOs. Implementing this layer of abstraction means that the Servlet is always shielded from any changes to how the actual business data is retrieved. If for example this solution started using EJBs or web services as a data source instead of JDBC, then there would not be any need to change the Servlet as the information itself will not change, rather only the method of retrieval.
+ */
+package com.paltaie.olympics.service;

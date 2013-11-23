@@ -7,7 +7,7 @@ import com.wsp.olympics.model.Order;
 /**
  * Performs various order-related operations
  * 
- * @author WSP
+ * @author Patrick Altaie
  */
 public interface OrderDao {
 	/**
@@ -24,13 +24,6 @@ public interface OrderDao {
 	 * @return the order that was found, or null
 	 */
 	public Order getOrderById(String orderId);
-	/**
-	 * Gets an order by its order number (i.e. the business ID), or null if it cannot be found.
-	 * 
-	 * @param orderNumber the order number to search for
-	 * @return the order that was found, or null
-	 */
-	public Order getOrderByOrderNumber(String orderNumber);
 	/**
 	 * Gets a list of orders based on the given order status.
 	 * 

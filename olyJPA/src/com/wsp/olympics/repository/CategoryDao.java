@@ -7,7 +7,7 @@ import com.wsp.olympics.model.Category;
 /**
  * Generic interface for a category accessor.
  * 
- * @author WSP
+ * @author Patrick Altaie
  */
 public interface CategoryDao {
 	/**

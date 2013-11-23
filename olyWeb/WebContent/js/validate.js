@@ -2,7 +2,7 @@ function validateAddToCart() {
 	var invalid = false;
 	var errorList = new Array();
 	var qty = $("#qty").val();
-	if (qty != null && qty != 0 && qty.length != 0) {
+	if (qty != null && qty.length != 0) {
 		if (!isNumber(qty)) {
 			invalid = true;
 			errorList.push("Quantity is not a number");
@@ -22,11 +22,11 @@ function validateUpdateCart() {
 	var errorList = new Array();
 	var qtys = $("input[id^='qty']");
 	for ( var i = 0; i < qtys.length; i++) {
-		var thisQty = $(qtys[i]).val().trim();
+		var thisQty = $(qtys[i]).val();
 		if (thisQty != null && thisQty.length != 0) {
 			if (!isNumber(thisQty)) {
 				invalid = true;
-				errorList.push("\"" + thisQty + "\" is not a valid number. Quantity must be equal to or greater than zero");
+				errorList.push("\"" + $(thisQty).val() + "\" is not a valid number. Quantity must be equal to or greater than zero");
 			} else if (thisQty < 0) {
 				invalid = true;
 				errorList.push("Quantities must be equal to or greater than zero");
@@ -39,17 +39,13 @@ function validateUpdateCart() {
 	return evaluateValidation(invalid, errorList);
 }
 
-function validateUpdateOrder() {
-	return validateTrack();
-}
-
 function validateTrack() {
 	var invalid = false;
 	var errorList = new Array();
-	var orderId = $("#order_number").val();
+	var orderId = $("#order_id").val();
 	if (orderId == null || orderId.length == 0) {
 		invalid = true;
-		errorList.push("No order number was provided");
+		errorList.push("No order ID was provided");
 	}
 	return evaluateValidation(invalid, errorList);
 }
