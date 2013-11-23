@@ -1,0 +1,35 @@
+<project name="olyEJBClient" basedir=".">
+	<property name="build.dir" value="${basedir}/build2"/>
+	<property name="jar.name" value="olyEJBClient"/>
+	<!--CHANGE YOUR WEBLOGIC PATH HERE-->
+	<property name="wl.home" value="D:\Oracle\Middleware\wlserver_10.3"/>
+    
+	<path id="master-classpath">
+        <!--<pathelement path="${build.dir}"/>-->
+		<fileset dir="${wl.home}/server/lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset file="${build.dir}/olyJPA.jar"/>
+    </path>
+	
+	<target name="init">
+		<mkdir dir="${build.dir}"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<target name="olyejbclient-compile" depends="init">
+		<javac includeantruntime="false" srcdir="${basedir}/ejbModule" destdir="${build.dir}" classpathref="master-classpath"/>
+	</target>
+	
+	<target name="olyejbclient-jar" depends="olyejbclient-compile">
+		<jar file="${build.dir}/${jar.name}.jar">
+			<fileset dir="${build.dir}">
+				<include name="com/wsp/olympics/ejb/*Remote.class"/>
+				<include name="com/wsp/olympics/ejb/*Local.class"/>
+			</fileset>
+		</jar>
+	</target>
+</project>
