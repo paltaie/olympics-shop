@@ -31,7 +31,7 @@ public class UpdateOrderAction {
 		this.shoppingCartService = cartService;
 	}
 
-	@RequestMapping("updateOrder")
+	@RequestMapping("admin/updateOrder")
 	public ModelAndView execute(HttpServletRequest request,
 								@RequestParam("order_number") String orderNumber,
 								@RequestParam(value = "new_status", required = false) String newOrderStatus)

@@ -11,6 +11,6 @@ public class Observer {
 	}
 	
 	public void update() {
-		views.forEach(view -> view.update());
+		views.forEach(View::update);
 	}
 }

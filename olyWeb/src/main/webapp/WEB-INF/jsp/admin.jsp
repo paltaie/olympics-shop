@@ -5,14 +5,15 @@
 		<div id="content">
 			<h2>Admin page</h2>
 			<p>This is the admin page</p>
-			<a href="<c:url value="getOutstanding"/>">View outstanding orders</a>
+			<a href="<c:url value="admin/getOutstanding"/>">View outstanding orders</a>
 			<br/>
-			<form action="<c:url value="updateOrder"/>" method="post" onsubmit="return validateUpdateOrder();">
+			<form action="<c:url value="admin/updateOrder"/>" method="post" onsubmit="return validateUpdateOrder();">
 				<label for="order_number">Or update this order: </label>
 				<input type="text" id="order_number" name="order_number"/>
 				<input type="submit" value="Go"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
-			<p><a class="button" href="<c:url value="/logout"/>">Log out</a></p>
+			<p><a class="button" href="<c:url value="/j_spring_security_check?logout"/>">Log out</a></p>
 		</div>
 		<%@include file="include/footer.html"%>
 		<script type="text/javascript">

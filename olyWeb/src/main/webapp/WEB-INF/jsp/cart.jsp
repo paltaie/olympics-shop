@@ -24,6 +24,7 @@
 							<div id="cart_contents"><img src="resources/images/spinner.gif"/></div>
 							<br/>
 							<input class="button" type="submit" value="Update Cart"/>
+					        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						</form>
 						<c:forEach items="${cart.orderProducts}" var="orderProduct">
 							<c:set var="grandTotal" value="${grandTotal + (orderProduct.product.price * orderProduct.qty)}"/>

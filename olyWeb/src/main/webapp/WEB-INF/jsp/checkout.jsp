@@ -36,6 +36,7 @@
 				<label for="cc">Credit card number <span style="color:red;">*</span></label>
 				<input type="text" name="cc" id="cc" maxlength="16"><br>
 				<input class="button" type="submit" value="Continue"/>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 		</div>
 		<%@include file="include/footer.html"%>

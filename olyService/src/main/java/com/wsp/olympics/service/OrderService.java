@@ -30,7 +30,6 @@ public class OrderService {
 		order.setStatus(status);
 		orderDao.save(order);
 	}
-	
 
 	/**
 	 * Gets an order by its order number (i.e. the business ID), or null if it cannot be found.

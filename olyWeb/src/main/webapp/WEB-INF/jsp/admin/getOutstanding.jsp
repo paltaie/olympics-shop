@@ -19,7 +19,7 @@
 						<c:set var="orderTotal" value="${orderTotal + (orderProduct.product.price * orderProduct.qty)}"/>
 					</c:forEach>
 					<tr>
-						<td><a href="<c:url value="/updateOrder?order_number=${cart.order.orderNumber}"/>">${cart.order.orderNumber}</a></td>
+						<td><a href="<c:url value="updateOrder?order_number=${cart.order.orderNumber}"/>">${cart.order.orderNumber}</a></td>
 						<td>${cart.order.customer.surname}</td>
 						<td>${cart.order.customer.country}</td>
 						<td>${cart.order.customer.postcode}</td>
@@ -28,7 +28,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<p><a class="button" href="<c:url value="logout"/>">Log out</a><a class="button" href="<c:url value="admin"/>">Main page</a></p>
+			<p><a class="button" href="<c:url value="/j_spring_security_check?logout"/>">Log out</a><a class="button" href="<c:url value="/admin"/>">Main page</a></p>
 		</div>
 		<%@include file="../include/footer.html"%>
 		<script type="text/javascript">

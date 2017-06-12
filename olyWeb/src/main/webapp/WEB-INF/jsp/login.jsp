@@ -4,15 +4,16 @@
 		</jsp:include>
 		<div id="content">
 			<h2>Admin login</h2>
-			<form id="login_form" action="j_security_check" method="post">
+			<form id="login_form" action="j_spring_security_check" method="post">
 				<p>
-					<label for="j_username">Username</label>
-					<input id="j_username" name="j_username" type="text" />
+					<label for="username">Username</label>
+					<input id="username" name="username" type="text" />
 					<br/>
-					<label for="j_password">Password</label>
-					<input id="j_password" name="j_password" type="password" />
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password" />
 					<br/>
 					<input type="submit" value="Login" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				</p>
 			</form>
 		</div>

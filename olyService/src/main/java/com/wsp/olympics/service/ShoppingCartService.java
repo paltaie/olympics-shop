@@ -4,7 +4,6 @@ import com.wsp.olympics.model.Customer;
 import com.wsp.olympics.model.Order;
 import com.wsp.olympics.model.OrderProduct;
 import com.wsp.olympics.model.ShoppingCart;
-import com.wsp.olympics.repository.CustomerDao;
 import com.wsp.olympics.repository.OrderDao;
 import com.wsp.olympics.repository.OrderProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +25,11 @@ import java.util.stream.Collectors;
 @Component
 public class ShoppingCartService {
 
-	private CustomerDao customerDao;
 	private OrderDao orderDao;
 	private OrderProductDao orderProductDao;
 
 	@Autowired
-	public ShoppingCartService(CustomerDao customerDao, OrderDao orderDao, OrderProductDao orderProductDao) {
-		this.customerDao = customerDao;
+	public ShoppingCartService(OrderDao orderDao, OrderProductDao orderProductDao) {
 		this.orderDao = orderDao;
 		this.orderProductDao = orderProductDao;
 	}

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import com.wsp.olympics.supplierapp.service.SupplierModel;
 import com.wsp.olympics.supplierapp.view.View;
 import com.wsp.olympics.ws.types.PaidOrder;
+import org.springframework.web.client.HttpClientErrorException;
 
 public class SearchPanel extends JPanel implements View {
 	private SupplierModel model;
@@ -45,8 +46,8 @@ public class SearchPanel extends JPanel implements View {
 				if (paidOrderList.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "No paid orders found", "Information", JOptionPane.INFORMATION_MESSAGE);
 				}
-			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error returned by web service", JOptionPane.ERROR_MESSAGE);
+			} catch (HttpClientErrorException ex) {
+				JOptionPane.showMessageDialog(null, ex.getResponseBodyAsString(), "Error returned by web service", JOptionPane.ERROR_MESSAGE);
 				ex.printStackTrace();
 			}
 		}

@@ -39,6 +39,7 @@
 				<p>
 					<input type="hidden" id="product_code" name="product_code" value="${product.productCode}"/>
 					<input type="submit" id="add_to_cart" value="Add to Cart" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				</p>
 			</form>
 		</div>

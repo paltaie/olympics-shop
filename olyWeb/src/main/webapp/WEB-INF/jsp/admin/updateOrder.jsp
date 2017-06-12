@@ -9,8 +9,9 @@
 						<p class="notification">&#10004; Success. New status for order ${cart.order.orderNumber} is now ${cart.order.status}.</p>
 					</c:if>
 					<h2>Updating Order: ${cart.order.orderNumber}</h2>
-					<form action="<c:url value="/updateOrder"/>" method="post">
+					<form action="<c:url value="updateOrder"/>" method="post">
 					<input type="hidden" name="order_number" value="${cart.order.orderNumber}"/>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<ul>
 						<li>Name: ${cart.order.customer.givenName}&nbsp;${cart.order.customer.surname}</li>
 						<li>Email: ${cart.order.customer.email}</li>
@@ -34,9 +35,9 @@
 							<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${grandTotal}" type="currency" maxFractionDigits="2"/></span>
 						</p>
 						<p>
-							<a class="button" href="<c:url value="getOutstanding"/>">Outstanding orders</a>
-							<a class="button" href="<c:url value="admin"/>">Admin page</a>
-							<a class="button" href="<c:url value="logout"/>">Log out</a>
+							<a class="button" href="<c:url value="/admin/getOutstanding"/>">Outstanding orders</a>
+							<a class="button" href="<c:url value="/admin"/>">Admin page</a>
+							<a class="button" href="<c:url value="/j_spring_security_check?logout"/>">Log out</a>
 						</p>
 				</c:when>
 				<c:otherwise>
@@ -49,7 +50,7 @@
 		<script type="text/javascript">
 			$(".button").button();
 			$(document).ready(function() {
-				$.get("async/cartTable?order_id=${cart.order.orderId}&src=checkout", function(data) {
+				$.get("../async/cartTable?order_id=${cart.order.orderId}&src=checkout", function(data) {
 					$("#cart_contents").html(data);
 				});
 			});

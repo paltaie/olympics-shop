@@ -18,6 +18,7 @@
 						<input type="text" id="surname" name="surname"/>
 						<br/>
 						<input type="submit" id="submit_track" value="Search"/>
+					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						</p>
 					</form>
 				</c:when>

@@ -29,7 +29,7 @@ public class GetOutstandingOrdersAction {
 		this.cartService = cartService;
 	}
 
-	@RequestMapping("/getOutstanding")
+	@RequestMapping("admin/getOutstanding")
 	public ModelAndView execute() {
 		ModelAndView modelAndView = new ModelAndView("admin/getOutstanding");
 		//Get a list of carts whose status is ordered or paid
