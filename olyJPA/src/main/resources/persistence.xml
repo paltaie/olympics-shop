@@ -1,0 +1,12 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="olyJPA">
+        <class>com.wsp.olympics.model.Category</class>
+        <class>com.wsp.olympics.model.Customer</class>
+        <class>com.wsp.olympics.model.Order</class>
+        <class>com.wsp.olympics.model.OrderProduct</class>
+        <class>com.wsp.olympics.model.Product</class>
+    </persistence-unit>
+</persistence>
