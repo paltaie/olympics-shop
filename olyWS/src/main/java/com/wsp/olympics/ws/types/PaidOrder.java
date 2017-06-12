@@ -11,6 +11,12 @@ import com.wsp.olympics.model.OrderProduct;
 public class PaidOrder {
 	private Order order;
 	private List<OrderProduct> lineItem;
+
+	public PaidOrder(Order order, List<OrderProduct> lineItem) {
+		this.order = order;
+		this.lineItem = lineItem;
+	}
+
 	/**
 	 * @return the order
 	 */

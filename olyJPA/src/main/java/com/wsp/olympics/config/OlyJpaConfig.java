@@ -29,7 +29,7 @@ public class OlyJpaConfig {
     public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setDriverClass("org.h2.Driver");
-        comboPooledDataSource.setJdbcUrl("jdbc:h2:~/test;MODE=ORACLE");
+        comboPooledDataSource.setJdbcUrl("jdbc:h2:~/test;MODE=ORACLE;AUTO_SERVER=true");
         comboPooledDataSource.setUser("sa");
         comboPooledDataSource.setPassword("");
         comboPooledDataSource.setMaxStatements(1000);

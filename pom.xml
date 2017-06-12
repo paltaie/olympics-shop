@@ -14,6 +14,7 @@
         <module>olyWeb</module>
         <module>olyWS</module>
         <module>olyEAR</module>
+        <module>olyModel</module>
     </modules>
 
     <build>
@@ -32,6 +33,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>olyModel</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>olyService</artifactId>

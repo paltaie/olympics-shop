@@ -81,7 +81,7 @@ public class ShoppingCartService {
 	public ShoppingCart submitShoppingCart(ShoppingCart cart) {
 		Order order = cart.getOrder();
 		Customer customer = order.getCustomer();
-		order.setStatus("ORDERED");
+		order.setStatus("PAID");
 		order.setCustomer(customer);
 		order.setOrderNumber(UUID.randomUUID().toString());
 		order = orderDao.save(order);
