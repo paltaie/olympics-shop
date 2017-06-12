@@ -34,9 +34,9 @@ public class UpdateOrderAction {
 	@RequestMapping("updateOrder")
 	public ModelAndView execute(HttpServletRequest request,
 								@RequestParam("order_number") String orderNumber,
-								@RequestParam("new_status") String newOrderStatus)
+								@RequestParam(value = "new_status", required = false) String newOrderStatus)
 			throws ServletException, IOException {
-		ModelAndView modelAndView = new ModelAndView("updateOrder");
+		ModelAndView modelAndView = new ModelAndView("admin/updateOrder");
 		Long orderId;
 		Order order = orderService.getOrderByOrderNumber(orderNumber);
 		if (order != null) {

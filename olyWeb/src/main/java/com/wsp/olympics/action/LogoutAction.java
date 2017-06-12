@@ -22,7 +22,7 @@ public class LogoutAction {
 	@RequestMapping("/logout")
 	public ModelAndView execute(HttpServletRequest request)
 			throws ServletException, IOException {
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("admin/logout");
 		HttpSession session = request.getSession();
 		//Store the user name as an attribute because we're about to invalidate the session
 		//(and by association forget his or her name)

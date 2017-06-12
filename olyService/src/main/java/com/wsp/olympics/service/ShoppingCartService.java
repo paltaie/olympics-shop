@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * Performs various shopping cart-related operations by utilising various DAOs to construct the data model
@@ -63,12 +64,10 @@ public class ShoppingCartService {
 	 * @return a list of shopping carts with those particular statuses (or an empty cart if none could be found)
 	 */
 	public List<ShoppingCart> getCartsByStatus(String[] statuses) {
-		List<ShoppingCart> carts = new ArrayList<>();
-		Arrays.stream(statuses).forEach(status ->
-				orderDao.findByStatus(status).forEach(order ->
-						carts.add(getCartByOrderId(order.getOrderId()))
-        ));
-		return carts;
+        return orderDao.findByStatusIn(Arrays.asList(statuses))
+                .stream()
+                .map(order -> getCartByOrderId(order.getOrderId()))
+                .collect(Collectors.toList());
 	}
 
 	/**

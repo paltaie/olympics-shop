@@ -1,9 +1,8 @@
 package com.wsp.olympics.supplierapp.gui;
 
-import com.wsp.olympics.model.OrderProduct;
+import com.wsp.olympics.supplierapp.service.SupplierModel;
 import com.wsp.olympics.supplierapp.view.View;
 import com.wsp.olympics.ws.types.PaidOrder;
-import com.wsp.olympics.supplierapp.service.SupplierModel;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -15,6 +14,7 @@ public class ResultPanel extends JPanel implements View {
 	private SupplierModel model;
 	private JTable table;
 	private OrderTableModel otm = new OrderTableModel();
+	private NumberFormat formatter = NumberFormat.getCurrencyInstance();;
 
 	ResultPanel(SupplierModel model) {
 		this.model = model;
@@ -41,7 +41,7 @@ public class ResultPanel extends JPanel implements View {
 
 	private class OrderTableModel extends AbstractTableModel {
 
-		private Vector<String> headings = new Vector<String>();
+		private Vector<String> headings = new Vector<>();
 
 		public OrderTableModel() {
 			headings.add("Order Number");
@@ -86,20 +86,25 @@ public class ResultPanel extends JPanel implements View {
 		}
 
 		private String calculateGrandTotal(PaidOrder paidOrder) {
-			double total = 0;
-			for (OrderProduct op : paidOrder.getLineItem()) {
-				total += (op.getProduct().getPrice().doubleValue() * op.getQty().intValue());
-			}
-			NumberFormat formatter = NumberFormat.getCurrencyInstance();
+			double total = paidOrder
+					.getLineItem()
+					.stream()
+					.mapToDouble(orderProduct ->
+							orderProduct
+									.getProduct()
+									.getPrice()
+									.multiply(orderProduct.getQty())
+									.doubleValue())
+                    .sum();
 			return formatter.format(total);
 		}
 
 		private int calculateTotalItems(PaidOrder paidOrder) {
-			int total = 0;
-			for (OrderProduct op : paidOrder.getLineItem()) {
-				total += op.getQty().intValue();
-			}
-			return total;
+		    return paidOrder
+                    .getLineItem()
+                    .stream()
+                    .mapToInt(lineItem -> lineItem.getQty().intValue())
+                    .sum();
 		}
 	}
 }

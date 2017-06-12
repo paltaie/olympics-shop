@@ -2,8 +2,7 @@ package com.wsp.olympics.supplierapp.gui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 import com.wsp.olympics.supplierapp.service.SupplierModel;
 
@@ -22,7 +21,7 @@ public class MainWindow extends JFrame {
 	
 	private void setup() {
 		setTitle("olySupplier");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 	}
 	

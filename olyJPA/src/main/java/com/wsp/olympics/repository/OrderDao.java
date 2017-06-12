@@ -23,8 +23,8 @@ public interface OrderDao extends JpaRepository<Order, Long> {
 	/**
 	 * Gets a list of orders based on the given order status.
 	 * 
-	 * @param status the status(es) to look for
+	 * @param statuses the status(es) to look for
 	 * @return a list of orders with those statuses
 	 */
-	public List<Order> findByStatus(String status);
+	public List<Order> findByStatusIn(List<String> statuses);
 }

@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Observer {
-	private List<View> views = new ArrayList<View>();
+	private List<View> views = new ArrayList<>();
 	
 	public void attach(View view) {
 		views.add(view);
 	}
 	
 	public void update() {
-		for (View view : views) {
-			view.update();
-		}
+		views.forEach(view -> view.update());
 	}
 }

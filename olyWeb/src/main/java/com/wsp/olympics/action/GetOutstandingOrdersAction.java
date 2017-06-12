@@ -30,9 +30,8 @@ public class GetOutstandingOrdersAction {
 	}
 
 	@RequestMapping("/getOutstanding")
-	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		ModelAndView modelAndView = new ModelAndView("getOutstanding");
+	public ModelAndView execute() {
+		ModelAndView modelAndView = new ModelAndView("admin/getOutstanding");
 		//Get a list of carts whose status is ordered or paid
 		List<ShoppingCart> carts = cartService.getCartsByStatus(new String[] {"ORDERED", "PAID"});
 		modelAndView.addObject("carts", carts);

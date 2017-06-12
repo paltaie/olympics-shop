@@ -13,6 +13,7 @@ import com.wsp.olympics.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -30,34 +31,38 @@ public class CheckoutAction {
 		this.cartService = cartService;
 	}
 
-	@RequestMapping("/checkout")
-	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
+	public ModelAndView execute(HttpServletRequest request)
 			throws ServletException, IOException {
 		ModelAndView modelAndView = new ModelAndView("checkout");
-		String confirmed = request.getParameter("confirmed");
 		HttpSession session = request.getSession();
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 		//If the user's submitting their personal info
-		if (request.getMethod().equals("POST")) {
-			//Fill the DTO with the customer's info from the request and update the cart
-			Customer customer = populateCustomer(cart.getOrder().getCustomer(), request);
-			cart.getOrder().setCustomer(customer);
-			session.setAttribute("cart", cart);
-			modelAndView.addObject("cart", cart);
-			modelAndView.setViewName("confirmOrder");
-		} else {
-			if (confirmed != null && !confirmed.isEmpty()) {
-				//Submit the shopping cart for processing
-				cart = cartService.submitShoppingCart(cart);
-				if (cart == null) {
-					//If we encountered some error, show a "failure" page
-					modelAndView.setViewName("orderFailure");
-				} else {
-					//If it's all good, show a success page with the order number
-					modelAndView.addObject("cart", cart);
-					session.setAttribute("cart", null);
-					modelAndView.setViewName("orderSuccess");
-				}
+		//Fill the DTO with the customer's info from the request and update the cart
+		Customer customer = populateCustomer(cart.getOrder().getCustomer(), request);
+		cart.getOrder().setCustomer(customer);
+		session.setAttribute("cart", cart);
+		modelAndView.addObject("cart", cart);
+		modelAndView.setViewName("confirmOrder");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	public ModelAndView doCheckout(HttpServletRequest request, HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView("checkout");
+		String confirmed = request.getParameter("confirmed");
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+		if (confirmed != null && !confirmed.isEmpty()) {
+			//Submit the shopping cart for processing
+			cart = cartService.submitShoppingCart(cart);
+			if (cart == null) {
+				//If we encountered some error, show a "failure" page
+				modelAndView.setViewName("orderFailure");
+			} else {
+				//If it's all good, show a success page with the order number
+				modelAndView.addObject("cart", cart);
+				session.setAttribute("cart", null);
+				modelAndView.setViewName("orderSuccess");
 			}
 		}
 		return modelAndView;

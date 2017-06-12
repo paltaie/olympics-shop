@@ -6,6 +6,8 @@ import com.wsp.olympics.service.ShoppingCartService;
 import com.wsp.olympics.ws.types.PaidOrder;
 import com.wsp.olympics.ws.types.UpdateOrderStatusRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,20 +28,21 @@ public class Order {
     }
 
     @RequestMapping(value = "supplier/updateOrderStatus", method = RequestMethod.POST)
-    public void updateOrderStatus(@RequestBody UpdateOrderStatusRequest updateOrderStatusRequest) {
+    public ResponseEntity<String> updateOrderStatus(@RequestBody UpdateOrderStatusRequest updateOrderStatusRequest) {
         String orderNumber = updateOrderStatusRequest.getOrderNumber();
         String status = updateOrderStatusRequest.getStatus();
 
         com.wsp.olympics.model.Order order = orderService.getOrderByOrderNumber(orderNumber);
         if (order == null) {
-            throw new RuntimeException("Can't find order with ID \"" + orderNumber + "\"");
+            return new ResponseEntity<>("Could not find order with ID " + orderNumber, HttpStatus.NOT_FOUND);
         }
         Long orderId = order.getOrderId();
         if (status.toUpperCase().trim().equals("SENT")) {
             orderService.updateOrderStatus(orderId, status);
         } else {
-            throw new IllegalArgumentException("You can only set the status of an order to \"SENT\"");
+            return new ResponseEntity<>("You can only set the status of an order to \"SENT\"", HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "supplier/paidOrders", method = RequestMethod.GET)

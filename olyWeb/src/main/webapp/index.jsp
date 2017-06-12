@@ -10,7 +10,7 @@
 		</div>
 		<div id="aside">
 			<h3><span style="background-color: yellow;">Documentation</span></h3>
-			<p>Feel free to browse the documentation for this assignment <a href="docs/index.html">here</a></p>
+			<p>Feel free to browse the documentation for this assignment <a href="resources/docs/index.html">here</a></p>
 		</div>
 		<%@include file="WEB-INF/jsp/include/footer.html"%>
 		<script type="text/javascript">

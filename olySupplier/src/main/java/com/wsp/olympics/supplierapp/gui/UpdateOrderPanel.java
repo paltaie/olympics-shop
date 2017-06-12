@@ -1,20 +1,14 @@
 package com.wsp.olympics.supplierapp.gui;
 
+import com.wsp.olympics.supplierapp.service.SupplierModel;
+import com.wsp.olympics.supplierapp.view.View;
+import org.springframework.web.client.HttpClientErrorException;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.xml.ws.soap.SOAPFaultException;
-
-import com.wsp.olympics.supplierapp.service.SupplierModel;
-import com.wsp.olympics.supplierapp.view.View;
 
 public class UpdateOrderPanel extends JPanel implements View {
 	private static final String[] STATUSES = {"SENT", "ORDERED"};
@@ -70,10 +64,10 @@ public class UpdateOrderPanel extends JPanel implements View {
 						orderNumberField.getText() + "\" to \"" +
 						statusComboBox.getSelectedItem().toString() + 
 						"\"", "Success!", JOptionPane.INFORMATION_MESSAGE);
-			} catch (SOAPFaultException ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error returned from server", JOptionPane.ERROR_MESSAGE);
-			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			} catch (HttpClientErrorException ex) {
+				JOptionPane.showMessageDialog(null, ex.getResponseBodyAsString(),
+						"Error from service",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
