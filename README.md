@@ -29,6 +29,6 @@ This will start the olyWS REST service at http://localhost:8081/supplier
 ## To run olySupplier:
 ```
 cd olySupplier
-mvn exec:java -Dprop.file=olySupplier.properties
+mvn exec:java
 ```
 This will launch a Swing GUI application

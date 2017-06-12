@@ -49,6 +49,10 @@ public class SearchPanel extends JPanel implements View {
 			} catch (HttpClientErrorException ex) {
 				JOptionPane.showMessageDialog(null, ex.getResponseBodyAsString(), "Error returned by web service", JOptionPane.ERROR_MESSAGE);
 				ex.printStackTrace();
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, ex.getMessage(),
+						"General error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

@@ -79,7 +79,7 @@ public class ShoppingCartService {
 		Customer customer = order.getCustomer();
 		order.setStatus("PAID");
 		order.setCustomer(customer);
-		order.setOrderNumber(UUID.randomUUID().toString());
+		order.setOrderNumber(UUID.randomUUID().toString().substring(0, 8).toUpperCase());
 		order = orderDao.save(order);
 		for (OrderProduct op : cart.getOrderProducts()) {
 			op.setOrder(order);

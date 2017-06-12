@@ -68,6 +68,10 @@ public class UpdateOrderPanel extends JPanel implements View {
 				JOptionPane.showMessageDialog(null, ex.getResponseBodyAsString(),
 						"Error from service",
 						JOptionPane.ERROR_MESSAGE);
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, ex.getMessage(),
+						"General error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

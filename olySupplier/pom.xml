@@ -19,17 +19,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.9.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.8.7</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.8.7</version>
         </dependency>
     </dependencies>
 
@@ -48,6 +45,12 @@
                 </executions>
                 <configuration>
                     <mainClass>com.wsp.olympics.supplierapp.gui.Root</mainClass>
+                    <systemProperties>
+                        <property>
+                            <key>prop.file</key>
+                            <value>olySupplier.properties</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
