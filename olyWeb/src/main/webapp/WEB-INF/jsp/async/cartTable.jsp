@@ -30,7 +30,7 @@
 			</td>
 			<td><fmt:formatNumber currencySymbol="$" value="${orderProduct.product.price * orderProduct.qty}" type="currency" maxFractionDigits="2"/></td>
 			<c:if test="${param.src == 'cart'}">
-				<td><input type="checkbox" id="remove_${orderProduct.product.productCode}" name="remove_${orderProduct.product.productCode}"/></td>
+				<td><input type="checkbox" id="remove_${orderProduct.product.productCode}" name="remove" value="${orderProduct.product.productCode}"/></td>
 			</c:if>
 		</tr>
 	</c:forEach>

@@ -14,7 +14,7 @@ public class ResultPanel extends JPanel implements View {
 	private SupplierModel model;
 	private JTable table;
 	private OrderTableModel otm = new OrderTableModel();
-	private NumberFormat formatter = NumberFormat.getCurrencyInstance();;
+	private NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
 	ResultPanel(SupplierModel model) {
 		this.model = model;

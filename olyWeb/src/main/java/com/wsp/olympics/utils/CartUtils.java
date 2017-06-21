@@ -10,7 +10,9 @@ import com.wsp.olympics.model.Customer;
 import com.wsp.olympics.model.Order;
 import com.wsp.olympics.model.OrderProduct;
 import com.wsp.olympics.model.ShoppingCart;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CartUtils {
 	/**
 	 * Analyses the current cart situation and figures out if we need to create

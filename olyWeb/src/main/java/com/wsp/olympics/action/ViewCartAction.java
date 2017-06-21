@@ -20,7 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class ViewCartAction {
-	private CartUtils cartUtils = new CartUtils();
+	private CartUtils cartUtils;
+
+	@Autowired
+	public ViewCartAction(CartUtils cartUtils) {
+		this.cartUtils = cartUtils;
+	}
 
 	@RequestMapping("/cart")
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)

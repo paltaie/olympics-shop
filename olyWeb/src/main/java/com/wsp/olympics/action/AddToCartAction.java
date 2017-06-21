@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -22,11 +21,12 @@ import java.math.BigDecimal;
 public class AddToCartAction {
 
 	private ShoppingCart cart = null;
-	private CartUtils cartUtils = new CartUtils();
+	private CartUtils cartUtils;
 	private ProductService productService;
 
 	@Autowired
-	public AddToCartAction(ProductService productService) {
+	public AddToCartAction(CartUtils cartUtils, ProductService productService) {
+		this.cartUtils = cartUtils;
 		this.productService = productService;
 	}
 

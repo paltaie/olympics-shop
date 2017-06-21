@@ -3,7 +3,7 @@
 	<head>
 		<link href="<c:url value="/resources/style/main.css"/>" rel="stylesheet" type="text/css" />
 		<link href="<c:url value="/resources/style/custom-theme/jquery-ui-1.8.23.custom.css"/>" rel="stylesheet" type="text/css"/>
-		<link id="page_favicon" href="<c:url value="/favicon.ico"/>" rel="icon" type="image/x-icon" />
+		<link id="page_favicon" href="<c:url value="/resources/favicon.ico"/>" rel="icon" type="image/x-icon" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/tablePagination.0.5.min.js"/>"></script>
