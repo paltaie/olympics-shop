@@ -6,3 +6,12 @@
 		Copyleft 2012 WSP. No rights reserved. <a style="color:white;" href="http://youtu.be/tsd5OkLvShw">I'm Alan Jones.</a>
 	</div>
 </div>
+<script type="text/javascript">
+	$(".button").button();
+	
+	$("#logoutBtn").click(function() {
+		$.post("<c:url value="/logout"/>", {"${_csrf.parameterName}": "${_csrf.token}" }, function(data) {
+			window.location.href = "<c:url value="/admin"/>";
+		});
+	});
+</script>

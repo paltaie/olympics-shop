@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.swing.JOptionPane;
-import javax.xml.ws.WebServiceException;
-
 import com.wsp.olympics.supplierapp.service.SupplierModel;
 
 public class Root {

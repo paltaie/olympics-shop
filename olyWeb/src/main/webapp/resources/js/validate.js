@@ -1,6 +1,6 @@
 function validateAddToCart() {
 	var invalid = false;
-	var errorList = new Array();
+	var errorList = [];
 	var qty = $("#qty").val();
 	if (qty != null && qty != 0 && qty.length != 0) {
 		if (!isNumber(qty)) {
@@ -19,7 +19,7 @@ function validateAddToCart() {
 
 function validateUpdateCart() {
 	var invalid = false;
-	var errorList = new Array();
+	var errorList = [];
 	var qtys = $("input[id^='qty']");
 	for ( var i = 0; i < qtys.length; i++) {
 		var thisQty = $(qtys[i]).val().trim();
@@ -45,7 +45,7 @@ function validateUpdateOrder() {
 
 function validateTrack() {
 	var invalid = false;
-	var errorList = new Array();
+	var errorList = [];
 	var orderId = $("#order_number").val();
 	if (orderId == null || orderId.length == 0) {
 		invalid = true;
@@ -61,9 +61,9 @@ function validateTrack() {
  */
 function validateCheckout() {
 	var invalid = false;
-	var errorList = new Array();
-	var requiredFields = new Array("first_name", "last_name", "email", "house_no", "street", "suburb", "state", "postcode", "country", "cc");
-	var descriptions = new Array("First name", "Surname", "Email", "House number", "Street", "Suburb", "State", "Postcode", "Country", "Credit card number");
+	var errorList = [];
+	var requiredFields = ["first_name", "last_name", "email", "house_no", "street", "suburb", "state", "postcode", "country", "cc"];
+	var descriptions = ["First name", "Surname", "Email", "House number", "Street", "Suburb", "State", "Postcode", "Country", "Credit card number"];
 	for (var i = 0; i < requiredFields.length; i++) {
 		var fieldValue = $("#" + requiredFields[i]).val();
 		if (fieldValue == null || fieldValue == "") {

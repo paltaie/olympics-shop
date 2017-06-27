@@ -37,7 +37,7 @@
 						<p>
 							<a class="button" href="<c:url value="/admin/getOutstanding"/>">Outstanding orders</a>
 							<a class="button" href="<c:url value="/admin"/>">Admin page</a>
-							<a class="button" href="<c:url value="/j_spring_security_check?logout"/>">Log out</a>
+							<button class="button" id="logoutBtn">Log out</button>
 						</p>
 				</c:when>
 				<c:otherwise>

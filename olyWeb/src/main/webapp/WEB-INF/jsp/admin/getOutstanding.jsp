@@ -14,25 +14,22 @@
 					<th>Status</th>
 				</tr>
 				<c:forEach items="${carts}" var="cart">
-					<c:set var="orderTotal" value="0"/>
+					<!--<c:set var="orderTotal" value="0"/>
 					<c:forEach items="${cart.orderProducts}" var="orderProduct">
 						<c:set var="orderTotal" value="${orderTotal + (orderProduct.product.price * orderProduct.qty)}"/>
-					</c:forEach>
+					</c:forEach>-->
 					<tr>
 						<td><a href="<c:url value="updateOrder?order_number=${cart.order.orderNumber}"/>">${cart.order.orderNumber}</a></td>
 						<td>${cart.order.customer.surname}</td>
 						<td>${cart.order.customer.country}</td>
 						<td>${cart.order.customer.postcode}</td>
-						<td><fmt:formatNumber currencySymbol="$" value="${orderTotal}" type="currency" maxFractionDigits="2"/></td>
+						<td><fmt:formatNumber currencySymbol="$" value="${cart.getOrderTotal()}" type="currency" maxFractionDigits="2"/></td>
 						<td>${cart.order.status}</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<p><a class="button" href="<c:url value="/j_spring_security_check?logout"/>">Log out</a><a class="button" href="<c:url value="/admin"/>">Main page</a></p>
+			<p><button id="logoutBtn" class="button">Log out</button><a class="button" href="<c:url value="/admin"/>">Main page</a></p>
 		</div>
 		<%@include file="../include/footer.html"%>
-		<script type="text/javascript">
-			$(".button").button();
-		</script>
 	</body>
 </html>

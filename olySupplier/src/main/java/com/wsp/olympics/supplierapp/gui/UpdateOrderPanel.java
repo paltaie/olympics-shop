@@ -12,13 +12,13 @@ import java.awt.event.KeyEvent;
 
 public class UpdateOrderPanel extends JPanel implements View {
 	private static final String[] STATUSES = {"SENT", "ORDERED"};
-	
+
 	private SupplierModel model;
 	private JLabel orderIdLabel = new JLabel("Order Number:");
 	private JTextField orderNumberField = new JTextField(15);
-	private JComboBox statusComboBox = new JComboBox(STATUSES);
+	private JComboBox<String> statusComboBox = new JComboBox<>(STATUSES);
 	private JButton updateButton = new JButton("Update");
-	
+
 	public UpdateOrderPanel(SupplierModel model) {
 		this.model = model;
 		setup();
@@ -51,9 +51,9 @@ public class UpdateOrderPanel extends JPanel implements View {
 
 	@Override
 	public void update() {
-		
+
 	}
-	
+
 	private class UpdateButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

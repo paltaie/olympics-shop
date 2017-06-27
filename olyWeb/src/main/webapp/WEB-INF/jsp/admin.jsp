@@ -13,11 +13,8 @@
 				<input type="submit" value="Go"/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
-			<p><a class="button" href="<c:url value="/j_spring_security_check?logout"/>">Log out</a></p>
+			<p><button class="button" id="logoutBtn">Log out</button></p>
 		</div>
 		<%@include file="include/footer.html"%>
-		<script type="text/javascript">
-			$(".button").button();
-		</script>
 	</body>
 </html>

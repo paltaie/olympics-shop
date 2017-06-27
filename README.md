@@ -15,7 +15,7 @@ The app contains three runnable components:
 ## To run olyWeb:
 ```
 cd olyWeb
-mvn clean install tomcat7:run
+mvn tomcat7:run
 ```
 This will start olyWeb at http://localhost:8080/olyWeb
 
