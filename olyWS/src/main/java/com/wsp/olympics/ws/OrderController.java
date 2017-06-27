@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class Order {
+public class OrderController {
     private OrderService orderService;
     private ShoppingCartService shoppingCartService;
 
     @Autowired
-    public Order(OrderService orderService, ShoppingCartService shoppingCartService) {
+    public OrderController(OrderService orderService, ShoppingCartService shoppingCartService) {
         this.orderService = orderService;
         this.shoppingCartService = shoppingCartService;
     }
