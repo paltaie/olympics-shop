@@ -1,7 +1,11 @@
 package com.wsp.olympics.model;
 
+import java.awt.Desktop.Action;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
+
+import javax.management.openmbean.OpenDataException;
 
 /**
  * Represents a shopping cart - an order and a list of items and their quantities
@@ -41,5 +45,11 @@ public class ShoppingCart implements Serializable {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public BigDecimal getOrderTotal() {
+		return orderProducts.stream().map(orderProducts ->
+				orderProducts.getProduct().getPrice().multiply(orderProducts.getQty()))
+					.reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
 }
