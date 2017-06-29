@@ -22,12 +22,11 @@ public class CartTableController {
     }
 
     @RequestMapping("async/cartTable")
-    public ModelAndView getCartTable(HttpServletRequest request,
-                                     HttpSession session,
+    public ModelAndView getCartTable(HttpSession session,
                                      @RequestParam(value = "order_id", required = false) Long orderId) {
         ModelAndView modelAndView = new ModelAndView("async/cartTable");
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-        if (request.getParameter("order_id") != null) {
+        if (orderId != null) {
             ShoppingCart resultCart = cartService.getCartByOrderId(orderId);
             modelAndView.addObject("cart", resultCart);
         } else {

@@ -72,8 +72,6 @@ CREATE TABLE orders
 	CONSTRAINT order_id_pk PRIMARY KEY (order_id),
 	CONSTRAINT customer_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
---
-CREATE BITMAP INDEX order_status ON orders(status);
 -- ----------------------------
 --
 -- Order Product Relationship Table

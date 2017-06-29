@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -32,8 +31,7 @@ public class UpdateOrderAction {
 	}
 
 	@RequestMapping("admin/updateOrder")
-	public ModelAndView execute(HttpServletRequest request,
-								@RequestParam("order_number") String orderNumber,
+	public ModelAndView execute(@RequestParam("order_number") String orderNumber,
 								@RequestParam(value = "new_status", required = false) String newOrderStatus)
 			throws ServletException, IOException {
 		ModelAndView modelAndView = new ModelAndView("admin/updateOrder");

@@ -12,7 +12,6 @@ public class CountryListController {
 
     @RequestMapping(value = "async/countryList", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
     public ModelAndView getCountryList() {
-
         return new ModelAndView("async/countryList");
     }
 }

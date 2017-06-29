@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.utils.CartUtils;
@@ -28,7 +27,7 @@ public class ViewCartAction {
 	}
 
 	@RequestMapping("/cart")
-	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView execute(HttpServletRequest request)
 			throws ServletException, IOException {
 		ModelAndView modelAndView = new ModelAndView("cart");
 		ShoppingCart cart = cartUtils.doCartLogic(request);

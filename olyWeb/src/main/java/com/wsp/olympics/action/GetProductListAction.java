@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class GetProductListAction {
 	}
 
 	@RequestMapping("/products")
-	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ModelAndView execute(HttpServletRequest request) throws ServletException, IOException {
 		ModelAndView modelAndView = new ModelAndView("products");
 		String category = request.getParameter("cat");
 		List<Product> products = null;

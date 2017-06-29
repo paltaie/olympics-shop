@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -38,9 +37,8 @@ public class TrackOrderAction {
 	}
 
 	@RequestMapping(value = "/track", method = RequestMethod.POST)
-	public ModelAndView doTrack(HttpServletRequest request,
-								String orderNumber,
-								@RequestParam(value = "surname", required = false) String surname)
+	public ModelAndView doTrack(@RequestParam(value = "order_number") String orderNumber,
+								@RequestParam(value = "surname") String surname)
 			throws ServletException, IOException {
 		ModelAndView modelAndView = new ModelAndView("track");
 		if (orderNumber != null) {
