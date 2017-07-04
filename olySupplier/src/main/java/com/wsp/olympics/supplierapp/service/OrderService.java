@@ -39,8 +39,7 @@ public class OrderService {
 		String usernamePasswordCombo = String.format("%s:%s", props.getProperty("ws.username"), props.getProperty("ws.password"));
 		String base64ifiedCombo = Base64.getEncoder().encodeToString(usernamePasswordCombo.getBytes());
 		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add("Authorization", "Basic " + base64ifiedCombo);
+		httpHeaders.add(HttpHeaders.AUTHORIZATION, "Basic " + base64ifiedCombo);
 		return httpHeaders;
 	}
-
 }

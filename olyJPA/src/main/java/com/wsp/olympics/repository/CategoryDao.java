@@ -17,5 +17,5 @@ public interface CategoryDao extends JpaRepository<Category, Long> {
 	 * @param name the name of the category we're looking for
 	 * @return the category's name, or null if there is no category with that name.
 	 */
-	public Category findByCategoryName(String name);
+	Category findByCategoryName(String name);
 }

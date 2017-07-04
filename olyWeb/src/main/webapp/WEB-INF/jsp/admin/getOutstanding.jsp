@@ -14,10 +14,6 @@
 					<th>Status</th>
 				</tr>
 				<c:forEach items="${carts}" var="cart">
-					<!--<c:set var="orderTotal" value="0"/>
-					<c:forEach items="${cart.orderProducts}" var="orderProduct">
-						<c:set var="orderTotal" value="${orderTotal + (orderProduct.product.price * orderProduct.qty)}"/>
-					</c:forEach>-->
 					<tr>
 						<td><a href="<c:url value="updateOrder?order_number=${cart.order.orderNumber}"/>">${cart.order.orderNumber}</a></td>
 						<td>${cart.order.customer.surname}</td>

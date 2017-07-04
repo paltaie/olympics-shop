@@ -19,12 +19,12 @@ public interface OrderDao extends JpaRepository<Order, Long> {
 	 * @param orderNumber the order number to search for
 	 * @return the order that was found, or null
 	 */
-	public Order findByOrderNumber(String orderNumber);
+	Order findByOrderNumber(String orderNumber);
 	/**
 	 * Gets a list of orders based on the given order status.
 	 * 
 	 * @param statuses the status(es) to look for
 	 * @return a list of orders with those statuses
 	 */
-	public List<Order> findByStatusIn(List<String> statuses);
+	List<Order> findByStatusIn(List<String> statuses);
 }

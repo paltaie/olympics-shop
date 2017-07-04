@@ -1,11 +1,8 @@
 package com.wsp.olympics.model;
 
-import java.awt.Desktop.Action;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-
-import javax.management.openmbean.OpenDataException;
 
 /**
  * Represents a shopping cart - an order and a list of items and their quantities

@@ -19,5 +19,5 @@ public interface ProductDao extends JpaRepository<Product, Long> {
 	 * @param category the category to search for
 	 * @return a list of products, or an empty list if there are no products in that category
 	 */
-	public List<Product> findByCategory(Category category);
+	List<Product> findByCategory(Category category);
 }

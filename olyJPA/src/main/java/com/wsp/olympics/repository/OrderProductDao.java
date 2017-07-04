@@ -19,5 +19,5 @@ public interface OrderProductDao extends JpaRepository<OrderProduct, Long> {
 	 * @param orderId the order ID to look for
 	 * @return the list of order/products to get
 	 */
-	public List<OrderProduct> findByOrderOrderId(Long orderId);
+	List<OrderProduct> findByOrderOrderId(Long orderId);
 }
