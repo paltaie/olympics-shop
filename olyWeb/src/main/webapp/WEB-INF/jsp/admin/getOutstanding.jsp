@@ -19,7 +19,7 @@
 						<td>${cart.order.customer.surname}</td>
 						<td>${cart.order.customer.country}</td>
 						<td>${cart.order.customer.postcode}</td>
-						<td><fmt:formatNumber currencySymbol="$" value="${cart.getOrderTotal()}" type="currency" maxFractionDigits="2"/></td>
+						<td><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></td>
 						<td>${cart.order.status}</td>
 					</tr>
 				</c:forEach>

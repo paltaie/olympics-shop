@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-
 /**
  * Updates an order given the ID. This is an admin-only action
  * 
@@ -32,8 +29,7 @@ public class UpdateOrderAction {
 
 	@RequestMapping("admin/updateOrder")
 	public ModelAndView execute(@RequestParam("order_number") String orderNumber,
-								@RequestParam(value = "new_status", required = false) String newOrderStatus)
-			throws ServletException, IOException {
+								@RequestParam(value = "new_status", required = false) String newOrderStatus) {
 		ModelAndView modelAndView = new ModelAndView("admin/updateOrder");
 		Long orderId;
 		Order order = orderService.getOrderByOrderNumber(orderNumber);

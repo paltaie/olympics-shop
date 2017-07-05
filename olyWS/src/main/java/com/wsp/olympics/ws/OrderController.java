@@ -37,7 +37,7 @@ public class OrderController {
             return new ResponseEntity<>("Could not find order with ID " + orderNumber, HttpStatus.NOT_FOUND);
         }
         Long orderId = order.getOrderId();
-        if (status.toUpperCase().trim().equals("SENT")) {
+        if ("SENT".equalsIgnoreCase(status.trim())) {
             orderService.updateOrderStatus(orderId, status);
         } else {
             return new ResponseEntity<>("You can only set the status of an order to \"SENT\"", HttpStatus.BAD_REQUEST);

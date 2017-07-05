@@ -1,15 +1,5 @@
 package com.wsp.olympics.action;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-
 import com.wsp.olympics.model.OrderProduct;
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.utils.CartUtils;
@@ -17,6 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UpdateCartAction {
@@ -30,8 +27,7 @@ public class UpdateCartAction {
     }
 
     @RequestMapping("/updateCart")
-	public ModelAndView execute(HttpServletRequest request)
-			throws ServletException, IOException {
+	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("cart");
 		cart = cartUtils.doCartLogic(request);
 		updateCart(request, modelAndView);
@@ -64,7 +60,7 @@ public class UpdateCartAction {
         parameterMap.entrySet().stream().filter(entry -> entry.getKey().startsWith("qty_"))
             .forEach(entry -> {
                 Long newQty = Long.valueOf(entry.getValue()[0]);
-                Long productCode = Long.valueOf(entry.getKey().substring(entry.getKey().indexOf("_") + 1,
+                Long productCode = Long.valueOf(entry.getKey().substring(entry.getKey().indexOf('_') + 1,
                         entry.getKey().length()));
                 cart.getOrderProducts().forEach(op -> {
                         if (op.getProduct().getProductCode() == productCode) {

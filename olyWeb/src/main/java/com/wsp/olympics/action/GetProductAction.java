@@ -1,8 +1,5 @@
 package com.wsp.olympics.action;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import com.wsp.olympics.model.Product;
@@ -28,8 +25,7 @@ public class GetProductAction {
 	}
 
 	@RequestMapping("/product")
-	public ModelAndView execute(HttpServletRequest request, @RequestParam("id") String productCode)
-			throws ServletException, IOException {
+	public ModelAndView execute(HttpServletRequest request, @RequestParam("id") String productCode) {
 		ModelAndView modelAndView = new ModelAndView("product");
 		Product product = productService.getProductByCode(Long.valueOf(productCode));
 		

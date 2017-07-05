@@ -1,8 +1,5 @@
 package com.wsp.olympics.action;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,8 +28,7 @@ public class CheckoutAction {
 	}
 
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
-	public ModelAndView execute(HttpServletRequest request)
-			throws ServletException, IOException {
+	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("checkout");
 		HttpSession session = request.getSession();
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");

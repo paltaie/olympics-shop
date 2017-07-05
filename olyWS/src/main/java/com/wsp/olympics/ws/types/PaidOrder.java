@@ -1,13 +1,10 @@
 package com.wsp.olympics.ws.types;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlType;
-
 import com.wsp.olympics.model.Order;
 import com.wsp.olympics.model.OrderProduct;
 
-@XmlType(namespace="http://types.ws.olympics.wsp.com/")
+import java.util.List;
+
 public class PaidOrder {
 	private Order order;
 	private List<OrderProduct> lineItem;

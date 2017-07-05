@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.math.BigDecimal;
 
 @Controller
@@ -34,8 +32,7 @@ public class AddToCartAction {
 	public ModelAndView execute(HttpServletRequest request,
 								HttpSession session,
 								@RequestParam("product_code") String productId,
-								@RequestParam("qty") String quantity)
-			throws ServletException, IOException {
+								@RequestParam("qty") String quantity) {
 		ModelAndView modelAndView = new ModelAndView("cart");
 		cart = cartUtils.doCartLogic(request);
 		addItem(session, productService, quantity, productId);

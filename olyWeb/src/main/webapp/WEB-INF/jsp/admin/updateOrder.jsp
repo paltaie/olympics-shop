@@ -28,11 +28,8 @@
 					</ul>
 					</form>
 					<div id="cart_contents"><img src="<c:url value="/resources/images/spinner.gif"/>"/></div>
-						<c:forEach items="${cart.orderProducts}" var="orderProduct">
-							<c:set var="grandTotal" value="${grandTotal + (orderProduct.product.price * orderProduct.qty)}"/>
-						</c:forEach>
 						<p>
-							<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${grandTotal}" type="currency" maxFractionDigits="2"/></span>
+							<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span>
 						</p>
 						<p>
 							<a class="button" href="<c:url value="/admin/getOutstanding"/>">Outstanding orders</a>

@@ -45,8 +45,8 @@ public class ShoppingCart implements Serializable {
 	}
 	
 	public BigDecimal getOrderTotal() {
-		return orderProducts.stream().map(orderProducts ->
-				orderProducts.getProduct().getPrice().multiply(orderProducts.getQty()))
+		return orderProducts.stream().map(orderProduct ->
+				orderProduct.getProduct().getPrice().multiply(orderProduct.getQty()))
 					.reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
 }

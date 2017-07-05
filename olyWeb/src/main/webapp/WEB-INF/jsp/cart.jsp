@@ -26,11 +26,8 @@
 							<input class="button" type="submit" value="Update Cart"/>
 					        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						</form>
-						<c:forEach items="${cart.orderProducts}" var="orderProduct">
-							<c:set var="grandTotal" value="${grandTotal + (orderProduct.product.price * orderProduct.qty)}"/>
-						</c:forEach>
 						<p>
-							<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${grandTotal}" type="currency" maxFractionDigits="2"/></span>
+							<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span>
 						</p>
 					</c:otherwise>
 				</c:choose>

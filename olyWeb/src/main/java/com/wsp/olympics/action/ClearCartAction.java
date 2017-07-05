@@ -1,8 +1,5 @@
 package com.wsp.olympics.action;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import com.wsp.olympics.model.ShoppingCart;
@@ -23,8 +20,7 @@ public class ClearCartAction {
 	}
 
 	@RequestMapping("/clearCart")
-	public ModelAndView execute(HttpServletRequest request)
-			throws ServletException, IOException {
+	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("cart");
 		ShoppingCart cart = cartUtils.doCartLogic(request);
 		cart.getOrderProducts().clear();

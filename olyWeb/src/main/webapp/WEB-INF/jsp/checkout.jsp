@@ -6,11 +6,8 @@
 			<h2>Checkout</h2>
 			<p>Here's what you're ordering:</p>
 			<div id="cart_contents"><img src="resources/images/spinner.gif"/></div>
-			<c:forEach items="${cart.orderProducts}" var="orderProduct">
-				<c:set var="grandTotal" value="${grandTotal + (orderProduct.product.price * orderProduct.qty)}"/>
-			</c:forEach>
 			<p>
-				<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${grandTotal}" type="currency" maxFractionDigits="2"/></span>
+				<b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span>
 			</p>
 			<p><i>Not correct?</i> <a href="cart">click here</a> to edit your cart.</p>
 			<p>If that's right, let us get to know you better!</p>

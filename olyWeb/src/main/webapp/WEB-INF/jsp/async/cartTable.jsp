@@ -12,7 +12,6 @@
 		</c:if>
 	</tr>
 	<c:forEach items="${cart.orderProducts}" var="orderProduct">
-		<c:set var="grandTotal" value="${grandTotal + (orderProduct.product.price * orderProduct.qty)}"/>
 		<tr>
 			<td>${orderProduct.product.category.categoryName}</td>
 			<td>${orderProduct.product.productCode}</td>

@@ -8,9 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,7 +29,7 @@ public class GetProductListAction {
 	}
 
 	@RequestMapping("/products")
-	public ModelAndView execute(HttpServletRequest request) throws ServletException, IOException {
+	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("products");
 		String category = request.getParameter("cat");
 		List<Product> products = null;

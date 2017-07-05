@@ -11,7 +11,7 @@
 				<c:when test="${empty cart or empty surnameMatch}">
 					<form id="order_tracking" action="track" method="post" onsubmit="return validateTrack();">
 						<p>
-						<label for="order_id">Order Number <span style="color:red;">*</span></label>
+						<label for="order_number">Order Number <span style="color:red;">*</span></label>
 						<input type="text" id="order_number" name="order_number"/>
 						<br/>
 						<label for="surname">Surname</label>
@@ -27,10 +27,7 @@
 					<p>Your order status is: <span class="red">${cart.order.status}</span></p>
 					<p>Here's what you ordered:</p>
 					<div id="cart_contents"><img src="resources/images/spinner.gif"/></div>
-					<c:forEach items="${cart.orderProducts}" var="orderProduct">
-						<c:set var="grandTotal" value="${grandTotal + (orderProduct.product.price * orderProduct.qty)}"/>
-					</c:forEach>
-					<p><b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${grandTotal}" type="currency" maxFractionDigits="2"/></span></p>
+					<p><b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span></p>
 				</c:when>
 			</c:choose>
 		</div>
