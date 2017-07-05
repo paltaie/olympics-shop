@@ -1,6 +1,6 @@
 package com.wsp.olympics.supplierapp.service;
 
-import com.wsp.olympics.ws.types.PaidOrder;
+import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.supplierapp.view.Observer;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class SupplierModel extends Observer {
 	private OrderService orderService;
-	private List<PaidOrder> paidOrderList;
+	private List<ShoppingCart> paidOrderList;
 	private Properties props;
 	
 	public SupplierModel(Properties props) {
@@ -33,14 +33,14 @@ public class SupplierModel extends Observer {
 	/**
 	 * @return the paidOrderList
 	 */
-	public List<PaidOrder> getPaidOrderList() {
+	public List<ShoppingCart> getPaidOrderList() {
 		return paidOrderList;
 	}
 
 	/**
 	 * @param paidOrderList the paidOrderList to set
 	 */
-	public void setPaidOrderList(List<PaidOrder> paidOrderList) {
+	public void setPaidOrderList(List<ShoppingCart> paidOrderList) {
 		this.paidOrderList = paidOrderList;
 	}
 

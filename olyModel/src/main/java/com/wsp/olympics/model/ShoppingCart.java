@@ -49,4 +49,11 @@ public class ShoppingCart implements Serializable {
 				orderProduct.getProduct().getPrice().multiply(orderProduct.getQty()))
 					.reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
+
+	public int getTotalItems() {
+		return getOrderProducts()
+				.stream()
+				.mapToInt(lineItem -> lineItem.getQty().intValue())
+				.sum();
+	}
 }

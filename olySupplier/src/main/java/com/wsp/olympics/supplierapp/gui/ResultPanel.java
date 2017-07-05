@@ -1,8 +1,8 @@
 package com.wsp.olympics.supplierapp.gui;
 
+import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.supplierapp.service.SupplierModel;
 import com.wsp.olympics.supplierapp.view.View;
-import com.wsp.olympics.ws.types.PaidOrder;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -43,7 +43,7 @@ public class ResultPanel extends JPanel implements View {
 
 		private Vector<String> headings = new Vector<>();
 
-		public OrderTableModel() {
+		OrderTableModel() {
 			headings.add("Order Number");
 			headings.add("Surname");
 			headings.add("Total Items");
@@ -71,40 +71,16 @@ public class ResultPanel extends JPanel implements View {
 
 		@Override
 		public Object getValueAt(int rowIndex, int columnIndex) {
-			PaidOrder currentOrder = model.getPaidOrderList().get(rowIndex);
-			int totalItems = calculateTotalItems(currentOrder);
-			String grandTotal = calculateGrandTotal(currentOrder);
+			ShoppingCart currentOrder = model.getPaidOrderList().get(rowIndex);
 
 			switch (columnIndex) {
 				case 0: return currentOrder.getOrder().getOrderNumber();
 				case 1: return currentOrder.getOrder().getCustomer().getSurname();
-				case 2: return totalItems;
+				case 2: return currentOrder.getTotalItems();
 				case 3: return currentOrder.getOrder().getStatus();
-				case 4: return grandTotal;
+				case 4: return formatter.format(currentOrder.getOrderTotal());
 				default: return "???";
 			}
-		}
-
-		private String calculateGrandTotal(PaidOrder paidOrder) {
-			double total = paidOrder
-					.getLineItem()
-					.stream()
-					.mapToDouble(orderProduct ->
-							orderProduct
-									.getProduct()
-									.getPrice()
-									.multiply(orderProduct.getQty())
-									.doubleValue())
-                    .sum();
-			return formatter.format(total);
-		}
-
-		private int calculateTotalItems(PaidOrder paidOrder) {
-		    return paidOrder
-                    .getLineItem()
-                    .stream()
-                    .mapToInt(lineItem -> lineItem.getQty().intValue())
-                    .sum();
 		}
 	}
 }

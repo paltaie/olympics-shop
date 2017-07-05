@@ -17,7 +17,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/supplier/**").authenticated()
                 .and()
             .httpBasic()
-                .realmName("Supplier Web Service");
+                .realmName("Supplier Web Service")
+                .and()
+            .csrf()
+                .disable();
     }
 
     @Autowired

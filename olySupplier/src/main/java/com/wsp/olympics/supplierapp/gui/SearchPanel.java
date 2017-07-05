@@ -8,9 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.supplierapp.service.SupplierModel;
 import com.wsp.olympics.supplierapp.view.View;
-import com.wsp.olympics.ws.types.PaidOrder;
 import org.springframework.web.client.HttpClientErrorException;
 
 public class SearchPanel extends JPanel implements View {
@@ -40,7 +40,7 @@ public class SearchPanel extends JPanel implements View {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				List<PaidOrder> paidOrderList = model.getOrderService().getPaidOrders();
+				List<ShoppingCart> paidOrderList = model.getOrderService().getPaidOrders();
 				model.setPaidOrderList(paidOrderList);
 				model.update();
 				if (paidOrderList.isEmpty()) {

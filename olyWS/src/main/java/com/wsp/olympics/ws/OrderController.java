@@ -3,7 +3,6 @@ package com.wsp.olympics.ws;
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.service.OrderService;
 import com.wsp.olympics.service.ShoppingCartService;
-import com.wsp.olympics.ws.types.PaidOrder;
 import com.wsp.olympics.ws.types.UpdateOrderStatusRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -46,12 +44,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "supplier/paidOrders", method = RequestMethod.GET)
-    public List<PaidOrder> getPaidOrders() {
-        List<PaidOrder> responses = new ArrayList<>();
-        List<ShoppingCart> carts = shoppingCartService.getCartsByStatus(new String[] {"PAID"});
-        carts.forEach(cart ->
-            responses.add(new PaidOrder(cart.getOrder(), cart.getOrderProducts()))
-        );
-        return responses;
+    public List<ShoppingCart> getPaidOrders() {
+        return shoppingCartService.getCartsByStatus(new String[] {"PAID"});
     }
 }

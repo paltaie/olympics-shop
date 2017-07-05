@@ -15,11 +15,8 @@
 						<p>There are no items in your shopping cart. Head over to the <a href="products">Product list</a> to find and add some!</p>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${cart.orderProducts}" var="orderProduct">
-							<c:set var="numItems" value="${numItems + (orderProduct.qty)}"/>
-						</c:forEach>
 						<p>
-						You have ${numItems} item<c:if test="${numItems gt 1}">s</c:if> in your cart:</p>
+						You have ${cart.totalItems} item<c:if test="${cart.totalItems gt 1}">s</c:if> in your cart:</p>
 						<form method="post" action="updateCart" onsubmit="return validateUpdateCart();">
 							<div id="cart_contents"><img src="resources/images/spinner.gif"/></div>
 							<br/>

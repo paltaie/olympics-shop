@@ -5,7 +5,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
 
-import com.wsp.olympics.ws.types.PaidOrder;
+import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.ws.types.UpdateOrderStatusRequest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,9 +23,9 @@ public class OrderService {
 		baseUrl = props.getProperty("svc.url");
 	}
 	
-	public List<PaidOrder> getPaidOrders() {
+	public List<ShoppingCart> getPaidOrders() {
 		HttpEntity<UpdateOrderStatusRequest> httpEntity = new HttpEntity<>(createHttpHeaders());
-		return Arrays.asList(restTemplate.exchange(baseUrl + "/paidOrders", HttpMethod.GET, httpEntity, PaidOrder[].class).getBody());
+		return Arrays.asList(restTemplate.exchange(baseUrl + "/paidOrders", HttpMethod.GET, httpEntity, ShoppingCart[].class).getBody());
 	}
 	
 	public void updateOrderStatus(String orderId, String status) {
