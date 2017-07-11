@@ -1,13 +1,13 @@
 package com.wsp.olympics.action;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.utils.CartUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Various cart-related actions such as updating the cart, adding items, etc.
@@ -23,7 +23,7 @@ public class ViewCartAction {
 		this.cartUtils = cartUtils;
 	}
 
-	@RequestMapping("/cart")
+	@GetMapping("/cart")
 	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("cart");
 		ShoppingCart cart = cartUtils.doCartLogic(request);

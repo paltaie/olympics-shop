@@ -2,7 +2,7 @@ package com.wsp.olympics.action.async;
 
 import com.wsp.olympics.model.ShoppingCart;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CartSizeController {
 
-    @RequestMapping("async/cartSize")
+    @GetMapping("async/cartSize")
     @ResponseBody
     public CartSizeResponse getCartSize(HttpSession session) {
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
@@ -21,7 +21,7 @@ public class CartSizeController {
         }
     }
 
-    private class CartSizeResponse {
+    protected class CartSizeResponse {
         private final int cartSize;
 
         CartSizeResponse(int cartSize) {

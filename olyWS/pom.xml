@@ -36,10 +36,5 @@
             <artifactId>olyService</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.wsp.olympics</groupId>
-            <artifactId>olyJPA</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>

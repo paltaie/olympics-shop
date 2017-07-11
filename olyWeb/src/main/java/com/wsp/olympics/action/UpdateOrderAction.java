@@ -7,6 +7,7 @@ import com.wsp.olympics.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +28,7 @@ public class UpdateOrderAction {
 		this.shoppingCartService = cartService;
 	}
 
-	@RequestMapping("admin/updateOrder")
+	@RequestMapping(value = "admin/updateOrder", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView execute(@RequestParam("order_number") String orderNumber,
 								@RequestParam(value = "new_status", required = false) String newOrderStatus) {
 		ModelAndView modelAndView = new ModelAndView("admin/updateOrder");

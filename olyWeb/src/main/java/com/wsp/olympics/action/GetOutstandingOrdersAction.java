@@ -1,13 +1,13 @@
 package com.wsp.olympics.action;
 
-import java.util.List;
-
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Gets a list of outstanding orders. This is an admin-only action.
@@ -24,7 +24,7 @@ public class GetOutstandingOrdersAction {
 		this.cartService = cartService;
 	}
 
-	@RequestMapping("admin/getOutstanding")
+	@GetMapping("admin/getOutstanding")
 	public ModelAndView execute() {
 		ModelAndView modelAndView = new ModelAndView("admin/getOutstanding");
 		//Get a list of carts whose status is ordered or paid

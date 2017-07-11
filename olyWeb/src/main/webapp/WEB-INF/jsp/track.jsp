@@ -6,7 +6,7 @@
 			<h2>Order Tracking<c:if test="${surnameMatch eq true}">: ${cart.order.orderNumber}</c:if></h2>
 			<c:choose>
 				<c:when test="${orderNotFound eq true or surnameMatch eq false}">
-					<p>The details you provided do not match any entry in our system. Please <a href="<c:url value="track"/>">try again</a> or start a new order by looking at our <a href="<c:url value="products"/>">products page</a></p>
+					<p id="orderNotFoundOrSurnameMismatch">The details you provided do not match any entry in our system. Please <a href="<c:url value="track"/>">try again</a> or start a new order by looking at our <a href="<c:url value="products"/>">products page</a></p>
 				</c:when>
 				<c:when test="${empty cart or empty surnameMatch}">
 					<form id="order_tracking" action="track" method="post" onsubmit="return validateTrack();">
@@ -24,10 +24,10 @@
 				</c:when>
 				<c:when test="${surnameMatch eq true}">
 					<p>Welcome <span>${cart.order.customer.givenName}</span> <span>${cart.order.customer.surname}</span>!</p>
-					<p>Your order status is: <span class="red">${cart.order.status}</span></p>
+					<p>Your order status is: <span class="red" id="orderStatus">${cart.order.status}</span></p>
 					<p>Here's what you ordered:</p>
 					<div id="cart_contents"><img src="resources/images/spinner.gif"/></div>
-					<p><b>Grand total:</b> <span class="red"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span></p>
+					<p><b>Grand total:</b> <span class="red" id="grandTotal"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span></p>
 				</c:when>
 			</c:choose>
 		</div>

@@ -5,10 +5,10 @@ import com.wsp.olympics.service.CategoryService;
 import com.wsp.olympics.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -28,12 +28,10 @@ public class GetProductListAction {
 		this.catService = catService;
 	}
 
-	@RequestMapping("/products")
-	public ModelAndView execute(HttpServletRequest request) {
+	@GetMapping("/products")
+	public ModelAndView execute(@RequestParam(value = "cat", required = false) String category) {
 		ModelAndView modelAndView = new ModelAndView("products");
-		String category = request.getParameter("cat");
-		List<Product> products = null;
-
+		List<Product> products;
 		if (category != null) {
 			//If we have a category get all products with that category
 			products = productService.getProductsByCategoryName(category);

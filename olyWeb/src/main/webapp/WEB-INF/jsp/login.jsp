@@ -12,7 +12,7 @@
 					<label for="password">Password</label>
 					<input id="password" name="password" type="password" />
 					<br/>
-					<input type="submit" value="Login" />
+					<input type="submit" id="login" value="Login" />
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				</p>
 			</form>

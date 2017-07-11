@@ -5,7 +5,7 @@ import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.utils.CartUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class UpdateCartAction {
         this.cartUtils = cartUtils;
     }
 
-    @RequestMapping("/updateCart")
+    @PostMapping("/updateCart")
 	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("cart");
 		cart = cartUtils.doCartLogic(request);

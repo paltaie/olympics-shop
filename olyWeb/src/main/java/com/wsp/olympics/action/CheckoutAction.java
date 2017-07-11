@@ -8,8 +8,8 @@ import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,13 +27,11 @@ public class CheckoutAction {
 		this.cartService = cartService;
 	}
 
-	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
+	@PostMapping(value = "/checkout")
 	public ModelAndView execute(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("checkout");
 		HttpSession session = request.getSession();
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-		//If the user's submitting their personal info
-		//Fill the DTO with the customer's info from the request and update the cart
 		Customer customer = populateCustomer(cart.getOrder().getCustomer(), request);
 		cart.getOrder().setCustomer(customer);
 		session.setAttribute("cart", cart);
@@ -42,7 +40,7 @@ public class CheckoutAction {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	@GetMapping("/checkout")
 	public ModelAndView doCheckout(HttpServletRequest request, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView("checkout");
 		String confirmed = request.getParameter("confirmed");

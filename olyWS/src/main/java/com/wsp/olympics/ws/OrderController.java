@@ -7,9 +7,9 @@ import com.wsp.olympics.ws.types.UpdateOrderStatusRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class OrderController {
         this.shoppingCartService = shoppingCartService;
     }
 
-    @RequestMapping(value = "supplier/updateOrderStatus", method = RequestMethod.POST)
+    @PostMapping(value = "supplier/updateOrderStatus")
     public ResponseEntity<String> updateOrderStatus(@RequestBody UpdateOrderStatusRequest updateOrderStatusRequest) {
         String orderNumber = updateOrderStatusRequest.getOrderNumber();
         String status = updateOrderStatusRequest.getStatus();
@@ -43,7 +43,7 @@ public class OrderController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "supplier/paidOrders", method = RequestMethod.GET)
+    @GetMapping(value = "supplier/paidOrders")
     public List<ShoppingCart> getPaidOrders() {
         return shoppingCartService.getCartsByStatus(new String[] {"PAID"});
     }

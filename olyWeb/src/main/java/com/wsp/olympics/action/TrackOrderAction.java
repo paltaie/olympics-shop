@@ -6,8 +6,8 @@ import com.wsp.olympics.service.OrderService;
 import com.wsp.olympics.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,12 +28,12 @@ public class TrackOrderAction {
 		this.shoppingCartService = shoppingCartService;
 	}
 
-	@RequestMapping(value = "/track", method = RequestMethod.GET)
+	@GetMapping("/track")
 	public String showTrack() {
 		return "track";
 	}
 
-	@RequestMapping(value = "/track", method = RequestMethod.POST)
+	@PostMapping("/track")
 	public ModelAndView doTrack(@RequestParam(value = "order_number") String orderNumber,
 								@RequestParam(value = "surname") String surname) {
 		ModelAndView modelAndView = new ModelAndView("track");

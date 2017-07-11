@@ -10,7 +10,7 @@
 			<form action="<c:url value="admin/updateOrder"/>" method="post" onsubmit="return validateUpdateOrder();">
 				<label for="order_number">Or update this order: </label>
 				<input type="text" id="order_number" name="order_number"/>
-				<input type="submit" value="Go"/>
+				<input id="updateIndividualSubmit" type="submit" value="Go"/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 			<p><button class="button" id="logoutBtn">Log out</button></p>

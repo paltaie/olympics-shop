@@ -5,7 +5,7 @@
 		<div id="content">
 			<h2>Order successful!</h2>
 			<p>Thanks for placing an order with us! Your order ID is</p>
-			<p style="font-size: x-large; color: red; font-weight: bold;">${cart.order.orderNumber}</p>
+			<p id="orderNumber" style="font-size: x-large; color: red; font-weight: bold;">${cart.order.orderNumber}</p>
 			<p>Please keep this ID handy, as you can use it for tracking on <a href="track">this page</a>.</p>
 			<a id="home" href="<c:url value="/"/>">Home</a>
 		</div>

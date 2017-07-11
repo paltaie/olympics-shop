@@ -2,11 +2,10 @@ package com.wsp.olympics.action;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.wsp.olympics.model.Product;
 import com.wsp.olympics.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,15 +23,10 @@ public class GetProductAction {
 		this.productService = productService;
 	}
 
-	@RequestMapping("/product")
-	public ModelAndView execute(HttpServletRequest request, @RequestParam("id") String productCode) {
+	@GetMapping("/product")
+	public ModelAndView execute(HttpServletRequest request, @RequestParam("id") Long productCode) {
 		ModelAndView modelAndView = new ModelAndView("product");
-		Product product = productService.getProductByCode(Long.valueOf(productCode));
-		
-		if (product != null) {
-			//If the product isn't null then attach it to the request
-			modelAndView.addObject("product", product);
-		}
+		modelAndView.addObject("product", productService.getProductByCode(productCode));
 		return modelAndView;
 	}
 }
