@@ -2,21 +2,22 @@ package com.wsp.olympics.supplierapp.service;
 
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.supplierapp.view.Observer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Properties;
 
+@Component
 public class SupplierModel extends Observer {
 	private OrderService orderService;
 	private List<ShoppingCart> paidOrderList;
-	private Properties props;
-	
-	public SupplierModel(Properties props) {
-		this.props = props;
-		orderService = new OrderService(props);
-	}
 
-	/**
+	@Autowired
+    public SupplierModel(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    /**
 	 * @return the orderService
 	 */
 	public OrderService getOrderService() {
@@ -42,19 +43,5 @@ public class SupplierModel extends Observer {
 	 */
 	public void setPaidOrderList(List<ShoppingCart> paidOrderList) {
 		this.paidOrderList = paidOrderList;
-	}
-
-	/**
-	 * @return the props
-	 */
-	public Properties getProps() {
-		return props;
-	}
-
-	/**
-	 * @param props the props to set
-	 */
-	public void setProps(Properties props) {
-		this.props = props;
 	}
 }

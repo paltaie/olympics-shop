@@ -11,6 +11,11 @@
     <artifactId>olyJPA</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -37,5 +42,4 @@
             <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
-
 </project>

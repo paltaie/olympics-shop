@@ -1,7 +1,7 @@
 olympics-shop
 =============
 
-Olympics shop: for that quad-annual headache you get when you need to establish a Java EE olympics shop
+Olympics shop: for that quadrennial headache you get when you need to establish a Java EE olympics shop
 
 # Building
 Simply run `mvn clean install` at the top level of the project, which will build all components
@@ -29,6 +29,6 @@ This will start the olyWS REST service at http://localhost:8081/supplier
 ## To run olySupplier:
 ```
 cd olySupplier
-mvn exec:java
+mvn spring-boot:run
 ```
 This will launch a Swing GUI application

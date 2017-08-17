@@ -1,5 +1,6 @@
-package com.wsp.olympics.ws;
+package com.wsp.olympics.ws.controller;
 
+import com.wsp.olympics.model.Order;
 import com.wsp.olympics.model.ShoppingCart;
 import com.wsp.olympics.service.OrderService;
 import com.wsp.olympics.service.ShoppingCartService;
@@ -30,7 +31,7 @@ public class OrderController {
         String orderNumber = updateOrderStatusRequest.getOrderNumber();
         String status = updateOrderStatusRequest.getStatus();
 
-        com.wsp.olympics.model.Order order = orderService.getOrderByOrderNumber(orderNumber);
+        Order order = orderService.getOrderByOrderNumber(orderNumber);
         if (order == null) {
             return new ResponseEntity<>("Could not find order with ID " + orderNumber, HttpStatus.NOT_FOUND);
         }

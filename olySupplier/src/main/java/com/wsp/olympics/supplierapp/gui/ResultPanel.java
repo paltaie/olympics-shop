@@ -51,6 +51,11 @@ public class ResultPanel extends JPanel implements View {
 			headings.add("Grand Total");
 		}
 
+        @Override
+		public Class<?> getColumnClass(int columnIndex) {
+			return columnIndex == 2 ? Integer.class : String.class;
+		}
+
 		@Override
 		public String getColumnName(int column) {
 			return headings.get(column);

@@ -44,10 +44,12 @@ public class SearchPanel extends JPanel implements View {
 				model.setPaidOrderList(paidOrderList);
 				model.update();
 				if (paidOrderList.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No paid orders found", "Information", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No paid orders found",
+                            "Information", JOptionPane.INFORMATION_MESSAGE);
 				}
 			} catch (HttpClientErrorException ex) {
-				JOptionPane.showMessageDialog(null, ex.getResponseBodyAsString(), "Error returned by web service", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, ex.getResponseBodyAsString(),
+						"Error returned by web service", JOptionPane.ERROR_MESSAGE);
 				ex.printStackTrace();
 			} catch (Exception ex) {
 				JOptionPane.showMessageDialog(null, ex.getMessage(),

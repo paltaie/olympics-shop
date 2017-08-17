@@ -23,7 +23,7 @@
 								<option value="PAID" <c:if test="${cart.order.status == 'PAID'}">selected = "selected"</c:if>>PAID</option>
 								<option value="SENT" <c:if test="${cart.order.status == 'SENT'}">selected = "selected"</c:if>>SENT</option>
 							</select>
-							<input type="submit" value="Update Order"/>
+							<input id="updateOrder" type="submit" value="Update Order"/>
 						</li>
 					</ul>
 					</form>

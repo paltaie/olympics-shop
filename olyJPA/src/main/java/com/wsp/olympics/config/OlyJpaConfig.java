@@ -1,6 +1,7 @@
 package com.wsp.olympics.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,10 +18,14 @@ import java.beans.PropertyVetoException;
 @EnableJpaRepositories(basePackages = "com.wsp.olympics.repository")
 @EnableTransactionManagement
 public class OlyJpaConfig {
+
+    @Autowired
+    private DataSource dataSource;
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException {
         LocalContainerEntityManagerFactoryBean localEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        localEntityManagerFactoryBean.setDataSource(dataSource());
+        localEntityManagerFactoryBean.setDataSource(dataSource);
         localEntityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         localEntityManagerFactoryBean.setPackagesToScan("com.wsp.olympics.model");
         localEntityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());

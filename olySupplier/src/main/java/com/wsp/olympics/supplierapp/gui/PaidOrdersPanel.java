@@ -6,10 +6,14 @@ import javax.swing.JPanel;
 
 import com.wsp.olympics.supplierapp.view.View;
 import com.wsp.olympics.supplierapp.service.SupplierModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PaidOrdersPanel extends JPanel implements View {
 	private SupplierModel model;
-	
+
+	@Autowired
 	public PaidOrdersPanel(SupplierModel model) {
 		this.model = model;
 		setup();

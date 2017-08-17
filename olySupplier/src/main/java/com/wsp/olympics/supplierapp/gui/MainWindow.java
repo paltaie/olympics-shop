@@ -1,24 +1,28 @@
 package com.wsp.olympics.supplierapp.gui;
 
-import java.awt.BorderLayout;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
+import java.awt.*;
 
-import com.wsp.olympics.supplierapp.service.SupplierModel;
-
+@org.springframework.stereotype.Component
 public class MainWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private SupplierModel model;
 	private JTabbedPane tabbedPane = new JTabbedPane();
-	
-	public MainWindow(SupplierModel model) {
-		this.model = model;
-		setup();
-		build();
-		pack();
-		setVisible(true);
-	}
-	
+
+	private PaidOrdersPanel paidOrdersPanel;
+	private UpdateOrderPanel updateOrderPanel;
+
+    @Autowired
+    public MainWindow(PaidOrdersPanel paidOrdersPanel, UpdateOrderPanel updateOrderPanel) throws HeadlessException {
+        this.paidOrdersPanel = paidOrdersPanel;
+        this.updateOrderPanel = updateOrderPanel;
+        setup();
+        build();
+        pack();
+        setVisible(true);
+    }
+
 	private void setup() {
 		setTitle("olySupplier");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -26,8 +30,8 @@ public class MainWindow extends JFrame {
 	}
 	
 	private void build() {
-		tabbedPane.addTab("Paid Orders", new PaidOrdersPanel(model));
-		tabbedPane.addTab("Update Order", new UpdateOrderPanel(model));
+		tabbedPane.addTab("Paid Orders", paidOrdersPanel);
+		tabbedPane.addTab("Update Order", updateOrderPanel);
 		add(tabbedPane);
 	}
 }

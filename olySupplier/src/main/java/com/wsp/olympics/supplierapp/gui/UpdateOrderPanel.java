@@ -2,6 +2,8 @@ package com.wsp.olympics.supplierapp.gui;
 
 import com.wsp.olympics.supplierapp.service.SupplierModel;
 import com.wsp.olympics.supplierapp.view.View;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 
 import javax.swing.*;
@@ -10,15 +12,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+@Component
 public class UpdateOrderPanel extends JPanel implements View {
 	private static final String[] STATUSES = {"SENT", "ORDERED"};
 
-	private SupplierModel model;
 	private JLabel orderIdLabel = new JLabel("Order Number:");
 	private JTextField orderNumberField = new JTextField(15);
 	private JComboBox<String> statusComboBox = new JComboBox<>(STATUSES);
 	private JButton updateButton = new JButton("Update");
 
+	private SupplierModel model;
+
+	@Autowired
 	public UpdateOrderPanel(SupplierModel model) {
 		this.model = model;
 		setup();
