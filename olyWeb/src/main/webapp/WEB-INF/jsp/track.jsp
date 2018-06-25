@@ -26,7 +26,7 @@
 					<p>Welcome <span>${cart.order.customer.givenName}</span> <span>${cart.order.customer.surname}</span>!</p>
 					<p>Your order status is: <span class="red" id="orderStatus">${cart.order.status}</span></p>
 					<p>Here's what you ordered:</p>
-					<div id="cart_contents"><img src="resources/images/spinner.gif"/></div>
+					<div id="cart_contents"><img src="<c:url value="/resources/images/spinner.gif"/>"/></div>
 					<p><b>Grand total:</b> <span class="red" id="grandTotal"><fmt:formatNumber currencySymbol="$" value="${cart.orderTotal}" type="currency" maxFractionDigits="2"/></span></p>
 				</c:when>
 			</c:choose>
