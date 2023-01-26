@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Viewing: ' + ${product.title})"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                        <p th:if="${product == null}">Could not find product with that ID.</p>
+                        <th:block th:unless="${product == null}">
+                            <h2>[[${product.title}]]</h2>
+                            <p><img th:src="@{${product.imgPath}}"/></p>
+                            <p id="product_summary">[[${product.description}]]</p>
+                            <table id="product_desc">
+                                <tr>
+                                    <td class="key">ID/SKU</td>
+                                    <td class="value">[[${product.productCode}]]</td>
+                                </tr>
+                                <tr>
+                                    <td class="key">Category</td>
+                                    <td class="value">[[${product.category.categoryName}]]</td>
+                                </tr>
+                                <tr>
+                                    <td class="key">Price</td>
+                                    <td class="value">[[${#numbers.formatCurrency(product.price)}]]</td>
+                                </tr>
+                            </table>
+                        </th:block>
+                </div>
+                <div id="aside">
+                    <h3>Order me!</h3>
+                    <form id="orderform_inner" th:action="@{/addToCart}" method="post" onsubmit="return validateAddToCart();">
+                        <p>
+                            <label for="qty">Please send me </label>
+                            <input type="text" class="qty" id="qty" name="qty" maxlength="3" size="3"/>
+                            of these things!
+                        </p>
+                        <p>
+                            <input type="hidden" id="product_code" name="product_code" th:value="${product.productCode}"/>
+                            <input type="submit" id="add_to_cart" value="Add to Cart" />
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

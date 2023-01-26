@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Admin page')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Admin page</h2>
+                    <p>This is the admin page</p>
+                    <a th:href="@{admin/getOutstanding}">View outstanding orders</a>
+                    <br/>
+                    <form th:action="@{admin/updateOrder}" method="post" onsubmit="return validateUpdateOrder();">
+                    <label for="order_number">Or update this order: </label>
+                    <input type="text" id="order_number" name="order_number"/>
+                    <input id="updateIndividualSubmit" type="submit" value="Go"/>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    </form>
+                    <p><button class="button" id="logoutBtn">Log out</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Checkout')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Checkout</h2>
+                    <p>Here's what you're ordering:</p>
+                    <div id="cart_contents"><img th:src="@{/images/spinner.gif}"/></div>
+                    <p>
+                        <b>Grand total:</b> <span class="red">[[${#numbers.formatCurrency(cart.orderTotal)}]]</span>
+                    </p>
+                    <p><i>Not correct?</i> <a th:href="@{/cart}">click here</a> to edit your cart.</p>
+                    <p>If that's right, let us get to know you better!</p>
+                    <form id="person_info" th:action="@{/checkout}" method="post" onsubmit="return validateCheckout();">
+                        <label for="first_name">First Name <span style="color:red;">*</span></label>
+                        <input type="text" name="first_name" id="first_name"><br>
+                        <label for="last_name">Last Name <span style="color:red;">*</span></label>
+                        <input type="text" name="last_name" id="last_name"><br>
+                        <label for="email">Email <span style="color:red;">*</span></label>
+                        <input type="text" name="email" id="email"><br>
+                        <label for="house_no">House number <span style="color:red;">*</span></label>
+                        <input type="text" name="house_no" id="house_no"><br>
+                        <label for="street">Street <span style="color:red;">*</span></label>
+                        <input type="text" name="street" id="street"><br>
+                        <label for="suburb">Suburb/Locality <span style="color:red;">*</span></label>
+                        <input type="text" name="suburb" id="suburb"><br>
+                        <label for="state">State/Province </label>
+                        <input type="text" name="state" id="state"><br>
+                        <label for="postcode">Postcode</labeL>
+                        <input type="text" name="postcode" id="postcode"><br>
+                        <label for="country">Country <span style="color:red;">*</span></label>
+                        <select id="country" name="country"></select><br>
+                        <label for="cc">Credit card number <span style="color:red;">*</span></label>
+                        <input type="text" name="cc" id="cc" maxlength="16"><br>
+                        <input class="button" type="submit" value="Continue"/>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+<script type="text/javascript">
+    var countryList = null;
+    var countries = "";
+
+    $(document).ready(function() {
+        $.get("async/cartTable?src=checkout", function(data) {
+            $("#cart_contents").html(data);
+        });
+
+        $.getJSON('async/countryList', function(data) {
+            countryList = data;
+            for (var i = 0; i < countryList.length; i++) {
+                countries += "<option value=\"" + countryList[i].value + "\">" + countryList[i].label + "</option>";
+            }
+            $("#country").html(countries);
+        });
+    });
+
+    $(".button").button();
+</script>
+</body>
+</html>

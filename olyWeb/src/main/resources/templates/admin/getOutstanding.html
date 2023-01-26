@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Outstanding Orders')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Outstanding Orders</h2>
+                    <table class="lined_table">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Surname</th>
+                            <th>Country</th>
+                            <th>Postcode</th>
+                            <th>Order Total</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr th:each="cart: ${carts}">
+                            <td><a th:href="@{/admin/updateOrder?order_number={orderNumber}(orderNumber=${cart.order.orderNumber})}">[[${cart.order.orderNumber}]]</a></td>
+                            <td>[[${cart.order.customer.surname}]]</td>
+                            <td>[[${cart.order.customer.country}]]</td>
+                            <td>[[${cart.order.customer.postcode}]]</td>
+                            <td>[[${#numbers.formatCurrency(cart.orderTotal)}]]</td>
+                            <td>[[${cart.order.status}]]</td>
+                        </tr>
+                    </table>
+                    <p><button id="logoutBtn" class="button">Log out</button><a class="button" th:href="@{/admin}">Main page</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

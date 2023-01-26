@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Login')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Admin login</h2>
+                    <form id="login_form" th:action="@{/j_spring_security_check}" method="post">
+                        <p>
+                            <label for="username">Username</label>
+                            <input id="username" name="username" type="text" />
+                            <br/>
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" />
+                            <br/>
+                            <input type="submit" id="login" value="Login" />
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

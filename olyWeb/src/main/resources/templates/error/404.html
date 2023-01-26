@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Error')"/>
+<body>
+<section class="section">
+	<div th:replace="fragments/navbar :: navbar()"/>
+	<div id="content-container">
+		<div id="content-container2">
+			<div id="content-container3">
+				<div id="content">
+					<h2>File not found</h2>
+					<p>The page you've tried to access can't be found. Please go to the <a th:href="@{/}">main page</a> and try again.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

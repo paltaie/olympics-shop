@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -21,10 +22,13 @@ public class CartTableController {
     }
 
     @GetMapping("async/cartTable")
-    public ModelAndView getCartTable(HttpSession session,
+    public ModelAndView getCartTable(HttpServletRequest request,
+                                     HttpSession session,
                                      @RequestParam(value = "order_id", required = false) Long orderId) {
         ModelAndView modelAndView = new ModelAndView("async/cartTable");
+        boolean fromCart = request.getParameter("src").equals("cart");
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+        modelAndView.addObject("fromCart", fromCart);
         if (orderId != null) {
             ShoppingCart resultCart = cartService.getCartByOrderId(orderId);
             modelAndView.addObject("cart", resultCart);

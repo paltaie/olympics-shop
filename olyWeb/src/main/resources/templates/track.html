@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Order Tracking')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Order Tracking<span th:if="${surnameMatch}">: [[${cart.order.orderNumber}]]</span></h2>
+                    <p th:if="${orderNotFound}" id="orderNotFoundOrSurnameMismatch">The details you provided do not match any entry in our system. Please <a th:href="@{/track}">try again</a> or start a new order by looking at our <a th:href="@{/products}">products page</a></p>
+
+                    <form th:if="${cart == null || surnameMatch == null}" id="order_tracking" th:action="@{/track}" method="post" onsubmit="return validateTrack();">
+                        <p>
+                            <label for="order_number">Order Number <span style="color:red;">*</span></label>
+                            <input type="text" id="order_number" name="order_number"/>
+                            <br/>
+                            <label for="surname">Surname</label>
+                            <input type="text" id="surname" name="surname"/>
+                            <br/>
+                            <input type="submit" id="submit_track" value="Search"/>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        </p>
+                    </form>
+
+                    <div th:if="${surnameMatch}" th:object="${cart.order.customer}">
+                        <p>Welcome <span>[[*{givenName}]]</span> <span>[[*{surname}]]</span>!</p>
+                        <p>Your order status is: <span class="red" id="orderStatus">[[${cart.order.status}]]</span></p>
+                        <p>Here's what you ordered:</p>
+                        <div id="cart_contents"><img alt="Please wait" th:src="@{/images/spinner.gif}"/></div>
+                        <p><b>Grand total:</b> <span class="red" id="grandTotal">[[${#numbers.formatCurrency(cart.orderTotal)}]]</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+<script th:if="${surnameMatch}" type="text/javascript">
+    $(document).ready(function() {
+        var orderId = [[${cart.order.orderId}]];
+        $.get("async/cartTable?order_id=" + orderId + "&src=checkout", function(data) {
+            $("#cart_contents").html(data);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Order Success')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Order successful!</h2>
+                    <p>Thanks for placing an order with us! Your order ID is</p>
+                    <p id="orderNumber" style="font-size: x-large; color: red; font-weight: bold;">[[${cart.order.orderNumber}]]</p>
+                    <p>Please keep this ID handy, as you can use it for tracking on <a th:href="@{/track}">this page</a>.</p>
+                    <a id="home" th:href="@{/}">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

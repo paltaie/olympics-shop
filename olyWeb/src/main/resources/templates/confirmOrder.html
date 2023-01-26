@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Order Confirmation')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Confirm Order</h2>
+                    <p>Just have a quick one-over at this info to make sure we aren't screwing you over or sending the order to the wrong person:</p>
+                    <p>Here's what you're ordering:</p>
+                    <div id="cart_contents"><img th:src="@{/images/spinner.gif}"/></div>
+                    <p>And here's the personal info you gave us:</p>
+                    <table class="lined_table" th:object="${cart.order.customer}">
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td><span>[[*{givenName}]]</span> <span>[[*{surname}]]</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td>[[*{email}]]</td>
+                        </tr>
+                        <tr>
+                            <td><b>Address</b></td>
+                            <td><span>[[*{houseNo}]]</span> [[*{street}]], [[*{suburb}]], [[*{state}]], [[*{postcode}]], [[*{country}]]</td>
+                        </tr>
+                        <tr>
+                            <td><b>Credit Card</b></td>
+                            <td><em>Ending in [[*{ccNumber.substring(12)}]]</em></td>
+                        </tr>
+                    </table>
+                    <p>Your current options</p>
+                    <a id="place_order" class="button" th:href="@{/checkout?confirmed=true}">Place order</a>
+                    <a class="button" th:href="@{/checkout}">Re-enter information</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.get("async/cartTable?src=cart", function(data) {
+            $("#cart_contents").html(data);
+        });
+    });
+
+    $(".button").button();
+</script>
+</body>
+</html>

@@ -45,6 +45,7 @@ public class CheckoutAction {
 		ModelAndView modelAndView = new ModelAndView("checkout");
 		String confirmed = request.getParameter("confirmed");
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+		modelAndView.addObject("cart", cart);
 		if (confirmed != null && !confirmed.isEmpty()) {
 			//Submit the shopping cart for processing
 			cart = cartService.submitShoppingCart(cart);
@@ -53,7 +54,6 @@ public class CheckoutAction {
 				modelAndView.setViewName("orderFailure");
 			} else {
 				//If it's all good, show a success page with the order number
-				modelAndView.addObject("cart", cart);
 				session.setAttribute("cart", null);
 				modelAndView.setViewName("orderSuccess");
 			}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Products')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <h2>Listing all products <span th:if="${!#lists.isEmpty(category)}">in category [[${category}]]</span></h2>
+                    <i th:if="${#lists.isEmpty(products)}">No products here</i>
+                    <div id="product_table">
+                        <th:block th:each="product, stat: ${products}">
+                            <div>
+                                <p>
+                                    <img th:alt="${'Product image preview for ' + product.title}" id="product_preview" th:src="@{${product.imgPath}}"/>
+                                </p>
+                                <p>
+                                    <a th:href="@{/product?id={id}(id=${product.productCode})}">[[${product.title}]]</a>
+                                </p>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+                <div id="aside">
+                    <h3>Categories</h3>
+                    <div th:each="category: ${categories}">
+                        <a class="category" th:href="@{/products?cat={nm}(nm=${category.categoryName})}">[[${category.categoryName}]]</a><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+
+<script th:inline="javascript" type="text/javascript">
+    $(".category").button({
+        icons: {primary:'ui-icon-triangle-1-e'}
+    });
+    var productsSize = [[${products.size()}]];
+    if (productsSize > 8) {
+        $("#product_table").tablePagination({
+            firstArrow: (new Image()).src="images/first.gif",
+            prevArrow : (new Image()).src="images/prev.gif",
+            lastArrow : (new Image()).src="images/last.gif",
+            nextArrow : (new Image()).src="images/next.gif",
+            rowsPerPage: 4,
+            topNav: true
+        });
+    }
+</script>
+</body>
+</html>

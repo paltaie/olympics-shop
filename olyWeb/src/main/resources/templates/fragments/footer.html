@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<footer class="footer has-text-centered" th:fragment="footer">
+		<div id="footer-container">
+			<div id="footer">
+				Copyleft 2012 WSP. No rights reserved. <a style="color:white;" href="http://youtu.be/tsd5OkLvShw">I'm Alan Jones.</a>
+			</div>
+		</div>
+		<script th:inline="javascript" type="text/javascript">
+			$(".button").button();
+
+			$("#logoutBtn").click(function() {
+				$.post("logout", {[[${_csrf.parameterName}]]: [[${_csrf.token}]] }, function(data) {
+					window.location.href = "admin";
+				});
+			});
+		</script>
+	</footer>
+</html>

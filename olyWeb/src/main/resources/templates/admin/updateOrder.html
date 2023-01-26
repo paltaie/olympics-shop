@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Update Order')"/>
+<body>
+<section class="section">
+    <div th:replace="fragments/navbar :: navbar()"/>
+    <div id="content-container">
+        <div id="content-container2">
+            <div id="content-container3">
+                <div id="content">
+                    <p th:if="${statusUpdated}" class="notification">&#10004; Success. New status for order [[${cart.order.orderNumber}]] is now [[${cart.order.status}]].</p>
+                    <th:block th:switch="${cart.order.orderId != null}">
+                        <th:block th:case="true">
+                            <h2>Updating Order: [[${cart.order.orderNumber}]]</h2>
+                            <form th:action="@{/admin/updateOrder}" method="post">
+                            <input type="hidden" name="order_number" th:value="${cart.order.orderNumber}"/>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                            <ul th:object="${cart.order.customer}">
+                                <li>Name: [[*{givenName}]]&nbsp;[[*{surname}]]</li>
+                                <li>Email: [[*{email}]]</li>
+                                <li>Address: <span>[[*{houseNo}]]</span> [[*{street}]], [[*{suburb}]], [[*{state}]], [[*{postcode}]], [[*{country}]]</li>
+                                <li>Credit card: XXXX-XXXX-XXXX-[[*{ccNumber.substring(12)}]]</li>
+                                <li><label for="new_status">Status:</label>
+                                    <select name="new_status" id="new_status">
+                                        <option value="ORDERED" th:attrappend="selected=${cart.order.status == 'ORDERED'} ? 'selected'">ORDERED</option>
+                                        <option value="PAID" th:attrappend="selected=${cart.order.status == 'PAID'} ? 'selected'">PAID</option>
+                                        <option value="SENT" th:attrappend="selected=${cart.order.status == 'SENT'} ? 'selected'">SENT</option>
+                                    </select>
+                                    <input id="updateOrder" type="submit" value="Update Order"/>
+                                </li>
+                            </ul>
+                            </form>
+                            <div id="cart_contents"><img alt="Please wait" th:src="@{/images/spinner.gif}"></div>
+                            <p>
+                                <b>Grand total:</b> <span class="red">[[${#numbers.formatCurrency(cart.orderTotal)}]]</span>
+                            </p>
+                            <p>
+                                <a class="button" th:href="@{/admin/getOutstanding}">Outstanding orders</a>
+                                <a class="button" th:href="@{/admin}">Admin page</a>
+                                <button class="button" id="logoutBtn">Log out</button>
+                            </p>
+                        </th:block>
+                        <th:block th:case="*">
+                            <h2>Order Not Found</h2>
+                            <p>Can't find that order. Go back to the <a th:href="@{/admin}">main page</a> and try again</p>
+                        </th:block>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer :: footer"/>
+<script th:inline="javascript" type="text/javascript">
+    $(".button").button();
+    $(document).ready(function() {
+        var orderId = [[${cart.order.orderId}]]
+        $.get("../async/cartTable?order_id=" + orderId + "&src=checkout", function(data) {
+            $("#cart_contents").html(data);
+        });
+    });
+</script>
+</body>
+</html>

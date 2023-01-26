@@ -266,13 +266,15 @@ h2, h3 {
 }
 
 #product_table {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
 	border-collapse: collapse;
 	width: 100%;
 }
 
-#product_table td {
+#product_table div {
 	border: 1px solid black;
-	width: 25%;
+	width: 100%;
 }
 
 #product_preview {

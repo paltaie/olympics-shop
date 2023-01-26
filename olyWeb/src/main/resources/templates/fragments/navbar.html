@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:fragment="navbar()">
+    <script th:inline="javascript" type="text/javascript">
+        $(document).ready(function() {
+            var url = /*[[@{/async/cartSize}]]*/;
+            $.getJSON(url, function(data) {
+                var cartSizeString = "(" + data.cartSize + " item";
+                if (data.cartSize != 1) {
+                    cartSizeString += "s";
+                }
+                cartSizeString += ")";
+                $("#cart_size").text(cartSizeString);
+            });
+        });
+    </script>
+    <div id="head-container">
+        <div id="header">
+            <h1>Olympics Shop</h1>
+            <div class="logo">
+                <img th:src="@{/images/header/logo.png}"/>
+            </div>
+        </div>
+    </div>
+    <div id="navigation-container">
+        <div id="navigation">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/products}">Products</a></li>
+                <li><a th:href="@{/cart}">Cart <span id="cart_size"></span></a></li>
+                <li><a th:href="@{/track}">Track Order</a></li>
+                <li><a th:href="@{/admin}">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</html>
