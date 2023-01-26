@@ -53,6 +53,6 @@ public class ProductService {
 	 * @return the product, or <code>null</code> if the product cannot be found
 	 */
 	public Product getProductByCode(Long productCode) {
-		return productDao.findOne(productCode);
+		return productDao.getById(productCode);
 	}
 }

@@ -26,7 +26,7 @@ public class OrderService {
 	 * @param status the new status to set
 	 */
 	public void updateOrderStatus(Long orderId, String status) {
-		Order order = orderDao.findOne(orderId);
+		Order order = orderDao.getById(orderId);
 		order.setStatus(status);
 		orderDao.save(order);
 	}

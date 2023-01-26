@@ -9,7 +9,7 @@
 			</c:when>
 			<c:when test="${not empty product}">
 			<h2>${product.title}</h2>
-			<p><img src="<c:url value="/resources/${product.imgPath}"/>"/></p>
+			<p><img src="<c:url value="/resources${product.imgPath}"/>"/></p>
 			<p id="product_summary">${product.description}</p>
 			<table id="product_desc">
 				<tr>

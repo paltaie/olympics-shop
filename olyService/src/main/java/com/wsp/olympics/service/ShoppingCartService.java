@@ -41,7 +41,7 @@ public class ShoppingCartService {
 	public ShoppingCart getCartByOrderId(Long orderId) {
 		try {
 			ShoppingCart cart = new ShoppingCart();
-			Order order = orderDao.findOne(orderId);
+			Order order = orderDao.getById(orderId);
 			List<OrderProduct> orderProducts = orderProductDao.findByOrderOrderId(orderId);
 			cart.setOrder(order);
 			cart.setOrderProducts(orderProducts);

@@ -23,7 +23,7 @@ public class OrderProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ORDER_PRODUCT_ORDERPRODUCTID_GENERATOR", sequenceName="ORDER_PRODUCT_SEQ")
+	@SequenceGenerator(name="ORDER_PRODUCT_ORDERPRODUCTID_GENERATOR", sequenceName="ORDER_PRODUCT_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ORDER_PRODUCT_ORDERPRODUCTID_GENERATOR")
 	@Column(name="ORDER_PRODUCT_ID")
 	private Long orderProductId;

@@ -1,6 +1,7 @@
 package com.wsp.olympics.config;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,15 +34,12 @@ public class OlyJpaConfig {
     }
 
     @Bean(destroyMethod = "close")
-    public DataSource dataSource() throws PropertyVetoException {
-        ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
-        comboPooledDataSource.setDriverClass("org.h2.Driver");
-        comboPooledDataSource.setJdbcUrl("jdbc:h2:~/test;MODE=ORACLE;AUTO_SERVER=true");
-        comboPooledDataSource.setUser("sa");
-        comboPooledDataSource.setPassword("");
-        comboPooledDataSource.setMaxStatements(1000);
-        comboPooledDataSource.setTestConnectionOnCheckout(true);
-        return comboPooledDataSource;
+    public DataSource dataSource() {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl("jdbc:h2:~/test;MODE=ORACLE;AUTO_SERVER=true");
+        config.setUsername("sa");
+        config.setPassword("");
+        return new HikariDataSource(config);
     }
 
     @Bean

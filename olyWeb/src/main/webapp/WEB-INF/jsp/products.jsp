@@ -10,7 +10,7 @@
 			<table id="product_table">
 				<tr>
 					<c:forEach items="${products}" var="product" varStatus="status">
-						<td><p><img id="product_preview" src="<c:url value="/resources/${product.imgPath}"/>"/></p><p><a href="product?id=${product.productCode}">${product.title}</a></p></td>
+						<td><p><img id="product_preview" src="<c:url value="/resources${product.imgPath}"/>"/></p><p><a href="product?id=${product.productCode}">${product.title}</a></p></td>
 						<c:if test="${status.count mod 4 eq 0}">
 							</tr><tr>
 						</c:if>
